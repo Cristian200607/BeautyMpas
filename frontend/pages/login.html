@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="../assets/styles/login.css"/>
+  <link rel="stylesheet" href="../utils/header.css">
+  <title>Iniciar Sesión</title>
+</head>
+<div id="header-container"></div>
+<body>
+    <div class="main-content">
+        <main class="main-container">
+            <div class="container">
+              <div class="datos">
+                <form id="FormLogin">
+                    <p class="indicacion">Ingresar a mi cuenta</p>
+                  <p class="indicacion">Ingrese su email y contraseña</p>
+          
+                  <label for="email">Email
+                    <input type="email" id="email" placeholder="Escriba su correo" />
+                  </label>
+          
+                  <label for="password">Contraseña
+                    <input type="password" id="contraseña" placeholder="Escriba su contraseña" />
+                  </label>
+          
+                  <div class="acciones">
+                    <label class="recordar">
+                      <input type="checkbox" /> Recordar contraseña
+                    </label>
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+
+                    <a href="/frontend/Usuarios/register/register.html"> Aun no estas registrada ? Crea una cuenta</a>
+                  </div>
+                  <button class="btnLogin">Ingresar</button>
+                </form>
+              </div>
+            </div>
+          </main>
+    </div>
+  
+
+  
+
+</body>
+<script src="../services/login.js"></script>
+<script src="../utils/header.js"></script>
+</html>
+

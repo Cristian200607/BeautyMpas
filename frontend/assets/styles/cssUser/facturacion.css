@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------------- HEADER ---------------- */
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    height: 100px;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: serif;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 180px;
+    width: auto;
+    justify-content: center;
+    justify-items: center;
+}
+
+.nav {
+    width: 20%;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    padding: 2rem;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+    z-index: 20;
+}
+
+.nav.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-list {
+    flex-direction: column;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: #333;
+}
+
+.enlaces a {
+    margin-left: 60px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: serif;
+}
+
+.abrir-menu,
+.cerrar-menu {
+    display: block;
+    border: 0;
+    font-size: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+    margin-bottom: 30px;
+    color: #1c1c1c;
+    margin-top: 20px;
+}
+
+.enlaces a:hover {
+    color: #f39ac6;
+}
+
+header button {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #f48ca7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header button:hover {
+    background-color: #e37395;
+    transform: scale(1.05);
+}
+/*----------------------------------------header---------------------------------------------------------*/
+.factura-container {
+    max-width: 600px;
+    margin: 2% 30%;
+    padding: 30px;
+    background: #fff;
+    border: 3px solid #d87dbf;
+    border-radius: 15px;
+    font-family: 'Georgia', serif;
+    color: #4a004f;
+    background-color: #fef0f5;
+    box-shadow: 0 0 20px rgba(214, 140, 190, 0.2);
+    text-align: center;
+}
+  
+.factura-check {
+    font-size: 50px;
+    color: #d87dbf;
+    margin-bottom: 10px;
+}
+  
+.factura-gracias {
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+  
+.factura-gracias span {
+    font-weight: bold;
+    color: #4a004f;
+}
+  
+.factura-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 0 auto 30px;
+    box-shadow: 0 0 10px rgba(221, 144, 199, 0.15);
+    text-align: left;
+}
+  
+.factura-etiqueta {
+    background-color: #eab0cd;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+  
+.factura-servicio {
+    font-size: 16px;
+    color: #4a004f;
+    margin-bottom: 15px;
+}
+  
+.factura-dato {
+    margin: 5px 0;
+    font-size: 14px;
+}
+  
+.factura-correo {
+    font-size: 14px;
+    margin-top: 20px;
+    color: #333;
+}
+  
+.factura-total {
+    margin-top: 30px;
+    font-size: 16px;
+}
+  
+.factura-total-monto {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a004f;
+    margin-bottom: 20px;
+}
+  
+.factura-footer {
+    font-size: 13px;
+    color: #5b0055;
+    background: #fff;
+    border-top: 1px dashed #dca3c8;
+    padding-top: 15px;
+    margin-top: 20px;
+    line-height: 1.5;
+    border-radius: 12px ;
+    box-shadow: 0 0 10px rgba(221, 144, 199, 0.15);
+}
+.btn-volver {
+    display: block; 
+    margin: 25px auto; 
+    text-align: center; 
+    padding: 10px 20px;
+    background-color: #f1abb6;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(216, 125, 191, 0.3);
+}
+  
+.btn-volver:hover {
+    background-color: #e1869c;  
+    transform: scale(1.05);
+}

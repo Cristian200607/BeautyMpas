@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Cuenta - Beauty Maps</title>
+  <link rel="stylesheet" href="./CssProfesionales/editarCuenta.css" />
+  <link rel="stylesheet" href="./cuenta.css" />
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <div class="mi-cuenta-contenido">
+    <div class="perfil">
+      <div class="perfil-imagen">
+        <img id="fotoPerfil" src="default.jpg" alt="Foto de perfil">
+        <input type="file" id="inputFotoPerfil" class="oculto">
+      </div>
+      <div class="perfil-info">
+        <h2 id="nombreUsuario">Nombre del Usuario</h2>
+       
+
+        <div class="perfil-bio">
+          <p id="descripcionUsuario">Descripción del usuario...</p>
+          <textarea id="inputDescripcion" class="oculto"></textarea>
+        </div>
+
+        <button id="btnEditarPerfil">Editar perfil</button>
+        <button id="btnGuardarPerfil" class="oculto">Guardar</button>
+        <button id="btnCancelarEdicion" class="oculto">Cancelar</button>
+        <button id="btnEliminarCuenta" class="oculto">Eliminar cuenta</button>
+        <button id="btnEditarPortafolio" class="oculto">Editar portafolio</button>
+      </div>
+    </div>
+
+    <div class="portafolio">
+      <h2>Portafolio</h2>
+      <form id="form-subida" class="oculto">
+        <input type="text" id="imagenInput" placeholder="URL de la imagen">
+        <button type="button" id="btnAgregarImagen">Agregar</button>
+        <button type="button" id="btnGuardarPortafolio">Guardar</button>
+        <button type="button" id="btnCancelarPortafolio">Cancelar</button>
+      </form>
+      <div id="contenedor-imagenes"></div>
+    </div>
+  </div>
+
+  <script src="./EditarCuentaJs/editarCuenta.js"></script>
+  <script src="/frontend/utilidades2/header/header.js"></script>
+</body>
+</html>

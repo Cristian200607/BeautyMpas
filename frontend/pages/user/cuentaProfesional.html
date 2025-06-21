@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/assets/styles/cssUser/cuentaProfesional.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/frontend/utilidades/header.css">
+    <title>Document</title>
+</head>
+<body>
+   <div id="header-container"></div>
+    <div class="container">
+        <div class="perfil">
+                <div class="foto">
+                    <img src="./imagenes_mi_cuenta/perfil.png" alt="foto de perfil" height="200px" width="200px">
+                </div>
+                <div class="datos">
+                    <div class="informacion">
+                        <h2 id="nombreDisplay"></h2>
+                    </div>
+                    <div class="informacion">
+                        <h2 id="emailDisplay"></h2>
+                    </div>
+                    <div class="informacion">
+                        <h2 id="direccionDisplay"></h2>
+                    </div>
+                    <div class="informacion">
+                        <h2 id="telefonoDisplay"></h2>
+                    </div>
+                    <div class="boton"> <a href="/cuestionario_agendar_citas/cuestionario_cliente.html"><button type="submit">Agendar Cita</button></a></div>
+                </div>
+        </div> 
+        <div class="portafolio">
+            <h1>Portafolio</h1>
+            <div class="collage">
+                <img src="./imagenes_mi_cuenta/collage1_mi_cuenta.jpg" alt="Foto 1">
+                <img src="./imagenes_mi_cuenta/collage2_mi_cuenta.jpg" alt="Foto 2">
+                <img src="./imagenes_mi_cuenta/collage3_mi_cuenta.jpg" alt="Foto 3">
+                <img src="./imagenes_mi_cuenta/collage4_mi_cuenta.jpg" alt="Foto 4">
+                <img src="./imagenes_mi_cuenta/collage5_mi_cuenta.jpg" alt="Foto 5">
+                <img src="./imagenes_mi_cuenta/collage6_mi_cuenta.jpg" alt="Foto 6">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/frontend/utilidades/header.js"></script>
+<script type="module" src="/frontend/services/servicesUser/getProfesionalById.js"></script>
+</html>

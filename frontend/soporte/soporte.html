@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soporte | Beauty Maps</title>
+  <link rel="stylesheet" href="/frontend/utilidades/header.css">
+  <link rel="stylesheet" href="soporte.css"> 
+  
+</head>
+<body>
+  <div id="header-container"></div>
+  <div class="header">
+    <h1>Soporte - Beauty Maps</h1>
+    <p>¿Tienes preguntas o necesitas ayuda? Estamos aquí para apoyarte.</p>
+ </div>
+  <main>
+     
+    <!-- Sección de preguntas frecuentes -->
+    <section>
+      <h2>Preguntas Frecuentes (FAQ)</h2>
+      <ul>
+        <li><strong>¿Cómo creo una cuenta?</strong> - Ve a la página de registro y completa el formulario.</li>
+        <li><strong>¿Cómo reservo un servicio?</strong> - Busca un profesional, selecciona el servicio y escoge una fecha disponible.</li>
+        <li><strong>¿Cómo cancelo una cita?</strong> - Ingresa a tu perfil, ve a “Mis citas” y selecciona “Cancelar”.</li>
+        <li><strong>¿Qué hago si el profesional no se presenta?</strong> - Contáctanos a través del formulario de soporte.</li>
+      </ul>
+    </section>
+
+    <!-- Sección de contacto -->
+    <section>
+      <h2>Contáctanos</h2>
+      <p>¿No encontraste lo que buscabas? Escríbenos directamente:</p>
+      <form action="/enviar-soporte" method="post">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="email">Correo electrónico:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="mensaje">Mensaje:</label><br>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea><br><br>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <!-- Información adicional -->
+    <section>
+      <h2>Otras formas de contacto</h2>
+      <p><strong>Email:</strong> soporte@beautymaps.com</p>
+      <p><strong>WhatsApp:</strong> +57 300 123 4567</p>
+      <p><strong>Horario de atención:</strong> Lunes a viernes de 8:00 a.m. a 6:00 p.m.</p>
+    </section>
+
+    <!-- Políticas -->
+    <section>
+      <h2>Políticas y Seguridad</h2>
+      <ul>
+        <li><a href ="/frontend/Soporte/privacidadpoliticas.html">Política de privacidad</a></li>
+        <li><a href="/frontend/Soporte/tyc.html">Términos y condiciones</a></li>
+        <li><a href="/frontend/Soporte/cancelaciones.html">Política de cancelaciones</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Beauty Maps. Todos los derechos reservados.</p>
+  </footer>
+  <script src="soporte.js"></script>
+</body>
+<script src="/frontend/utilidades/header.js"></script>
+</html>

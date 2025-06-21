@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Extensiones de Pestañas</title>
+  <link rel="stylesheet" href="/cuestionario_agendar_citas/cuestionario_servicios.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/frontend/utilidades/header.css">
+</head>
+<body>
+    <div id="header-container"></div>
+  <section class="servicios">
+    <h2>🔽 EXTENSIONES DE PESTAÑAS</h2>
+
+    <div class="servicio">
+      <div class="info">
+        <h3>Extensiones de Pestañas 2D Pelo a Pelo</h3>
+        <p>Conservando lo sutil y natural de las extensiones clásicas...</p>
+        <p><strong>Restricciones</strong><br>Ser menor de edad sin permiso de los padres o acudientes</p>
+      </div>
+      <div class="detalles">
+        <p class="precio">$220.000,00</p>
+        <p class="duracion">120 minutos</p>
+        <button class="reservar-btn">Reservar</button>
+      </div>
+    </div>
+  </section>
+  <section class="servicios">
+    <h2>🔽 EXTENSIONES DE PESTAÑAS</h2>
+
+    <div class="servicio">
+      <div class="info">
+        <h3>Extensiones de Pestañas 2D Pelo a Pelo</h3>
+        <p>Conservando lo sutil y natural de las extensiones clásicas...</p>
+        <p><strong>Restricciones</strong><br>Ser menor de edad sin permiso de los padres o acudientes</p>
+      </div>
+      <div class="detalles">
+        <p class="precio">$220.000,00</p>
+        <p class="duracion">120 minutos</p>
+        <button class="reservar-btn">Reservar</button>
+      </div>
+    </div>
+
+    
+
+  </section>
+  <section class="servicios">
+    <h2>🔽 EXTENSIONES DE PESTAÑAS</h2>
+
+    <div class="servicio">
+      <div class="info">
+        <h3>Extensiones de Pestañas 2D Pelo a Pelo</h3>
+        <p>Conservando lo sutil y natural de las extensiones clásicas...</p>
+        <p><strong>Restricciones</strong><br>Ser menor de edad sin permiso de los padres o acudientes</p>
+      </div>
+      <div class="detalles">
+        <p class="precio">$220.000,00</p>
+        <p class="duracion">120 minutos</p>
+        <button class="reservar-btn">Reservar</button>
+      </div>
+    </div>
+  </section>
+<div class="fecha-container">
+  <label for="fecha" class="fecha-label">Selecciona una fecha:</label>
+  <input type="date" id="fecha" class="fecha-input" />
+
+  <label for="hora" class="fecha-label">Selecciona una hora:</label>
+  <input type="time" id="hora" class="fecha-input" />
+</div>
+
+  <div class="barra-inferior">
+    <p><span id="cantidad">Has seleccionado 0 servicios</span></p>
+    <div class="resumen">
+      <p>Subtotal: <span id="subtotal">$0</span></p>
+      <a href="/cuestionario_agendar_citas/facturacion.html"><button class="finalizar-btn" disabled>Realizar reserva</button></a>
+    </div>
+  </div>
+
+<script>
+    let cantidad = 0;
+    let subtotal = 0;
+
+    const cantidadElem = document.getElementById('cantidad');
+    const subtotalElem = document.getElementById('subtotal');
+    const reservarBtns = document.querySelectorAll('.reservar-btn');
+    const finalizarBtn = document.querySelector('.finalizar-btn');
+
+    function formatoCOP(numero) {
+    return `$${numero.toLocaleString('es-CO')}`;
+    }
+
+    function reservarServicio(event) {
+    const btn = event.target;
+    const precioTexto = btn.parentElement.querySelector('.precio').textContent;
+    const valor = parseInt(precioTexto.replace(/[^\d]/g, ''));
+
+    if (btn.classList.contains('reservado')) {
+        // ❌ Deseleccionar
+        btn.textContent = "Reservar";
+        btn.style.backgroundColor = "#f3c7cc";  // Color original
+        btn.classList.remove('reservado');
+
+        cantidad--;
+        subtotal -= valor;
+    } else {
+        // ✅ Seleccionar
+        btn.textContent = "Reservado";
+        btn.style.backgroundColor = "#ccc";
+        btn.classList.add('reservado');
+
+        cantidad++;
+        subtotal += valor;
+    }
+
+    // Actualizar la visualización
+    cantidadElem.textContent = cantidad === 0
+        ? "No has seleccionado servicios"
+        : `Has seleccionado ${cantidad} servicio${cantidad > 1 ? 's' : ''}`;
+
+    subtotalElem.textContent = formatoCOP(subtotal);
+    finalizarBtn.disabled = cantidad === 0;
+    }
+
+    reservarBtns.forEach(btn => {
+    btn.addEventListener('click', reservarServicio);
+    });
+
+    const nav = document.querySelector("#nav");
+    const abrir = document.querySelector("#abrir")
+    const cerrar = document.querySelector("#cerrar")
+
+    abrir.addEventListener("click",() =>{
+        nav.classList.add("visible");
+    })
+    cerrar.addEventListener("click",() =>{
+        nav.classList.remove("visible");    
+    })
+</script>
+</body>
+<script src="/frontend/utilidades/header.js"></script>
+</html>
