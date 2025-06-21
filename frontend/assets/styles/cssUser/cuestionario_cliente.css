@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------------- HEADER ---------------- */
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    height: 100px;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: serif;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 180px;
+    width: auto;
+    justify-content: center;
+    justify-items: center;
+}
+
+.nav {
+    width: 20%;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    padding: 2rem;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+    z-index: 20;
+}
+
+.nav.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-list {
+    flex-direction: column;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: #333;
+}
+
+.enlaces a {
+    margin-left: 60px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: serif;
+}
+
+.abrir-menu,
+.cerrar-menu {
+    display: block;
+    border: 0;
+    font-size: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+    margin-bottom: 30px;
+    color: #1c1c1c;
+    margin-top: 20px;
+}
+
+.enlaces a:hover {
+    color: #f39ac6;
+}
+
+header button {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #f48ca7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header button:hover {
+    background-color: #e37395;
+    transform: scale(1.05);
+}
+
+/* ---------------- MAIN CONTAINER ---------------- */
+
+.main-container {
+    background-color: #fde3ee;
+    min-height: 100vh;
+    width: 100%;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.container {
+    background-color: white;
+    width: 70%;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+.texto h3 {
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 3px solid #d86cc0;
+    margin-bottom: 30px;
+    color: #4b004f;
+}
+
+.texto p {
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #9f8ba0;
+    margin-bottom: 10px;
+}
+
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+
+.pregunta,
+.pregunta1,
+.pregunta_abajo {
+    flex: 1 1 250px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+
+
+input,
+textarea {
+    border: 2px solid #e77dd9;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    box-shadow: 0 0 10px #e77dd9;
+    outline: none;
+}
+
+textarea {
+    height: 80px;
+    resize: none;
+}
+
+.pregunta:hover,
+.pregunta1:hover,
+.pregunta_abajo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+.boton_siguiente{
+    background-color: #f48ca7;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.boton_siguiente:hover {
+    background-color: #e06b92;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.boton_siguiente:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}

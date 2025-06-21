@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff8fb;
+  color: #333;
+  padding: 20px;
+}
+
+.mi-cuenta-contenido {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.perfil-imagen {
+  margin-right: 20px;
+}
+
+.perfil-imagen img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f59cbf;
+}
+
+.perfil-info {
+  flex-grow: 1;
+}
+
+.perfil-info h2,
+.perfil-bio p {
+  margin-bottom: 8px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #f2c6d9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  height: 60px;
+}
+
+button {
+  padding: 8px 16px;
+  margin: 5px 5px 5px 0;
+  border: none;
+  border-radius: 999px;
+  background-color: #f59cbf;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #e04e8b;
+}
+
+.oculto {
+  display: none;
+}
+
+.portafolio h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+#form-subida input[type="text"] {
+  width: calc(100% - 120px);
+  margin-right: 10px;
+}
+
+#contenedor-imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.imagen-portafolio {
+  position: relative;
+}
+
+.imagen-portafolio img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+input[type="file"] {
+ 
+  padding: 8px 16px;
+  background-color: #f59cbf;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}

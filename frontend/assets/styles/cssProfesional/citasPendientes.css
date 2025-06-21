@@ -1,0 +1,190 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    height: 100px;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: serif;
+    justify-content: space-between;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    padding: 0 30px;
+    z-index: 10;
+}
+.logo{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  
+    height: 180px; 
+    width: auto;
+    justify-content: center;
+    justify-items: center;
+}
+.nav{
+    width: 20%;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    padding: 2rem;
+    box-shadow: 0 0 0 100vmax rgb(0, 0,0, .5);
+    z-index: 20;
+}
+.nav.visible {
+    opacity: 1;
+    visibility: visible;
+}
+.nav-list{
+    flex-direction: column;
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;  
+}
+.nav-list a {
+    text-decoration: none;
+    color: #333;
+}
+.enlaces a{
+    margin-left: 60px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: serif;
+}
+.abrir-menu,
+.cerrar-menu{
+    display: block;
+    border: 0;
+    font-size: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+.abrir-menu{
+    color: #1c1c1c;
+}
+.cerrar-menu{
+    color: #1c1c1c;
+}
+    
+  
+.enlaces a:hover {
+      color: #f39ac6;
+}
+header button {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #f48ca7;
+    color: white;               /* Texto blanco para mejor contraste */
+    border: none;               /* Sin borde */
+    padding: 10px 20px;         /* Espaciado interno */
+    border-radius: 8px;         /* Bordes redondeados */
+    font-size: 25px;            /* Tamaño del texto */
+    cursor: pointer;            /* Cambia el cursor al pasar */
+    transition: all 0.3s ease;  /* Animación suave para cambios */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+  
+header button:hover {
+    background-color: #e37395;   /* Color más fuerte al pasar el mouse */
+    transform: scale(1.05);      /* Ligeramente más grande al hacer hover */
+}
+/*--------------------------------hasta aca va el head----------------------------------------  */ 
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fbe7f2;
+}
+
+.container {
+    padding: 20px;
+}
+
+.titulo {
+    background-color: #d08aae;
+    padding: 10px 20px;
+    width: fit-content;
+    border-radius: 20px;
+    color: black;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fila-datos {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    border: 2px solid #d08aae;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    gap: 10px;
+}
+.lugar{
+    margin-right: 390px;
+}
+
+.cuadro-citas {
+    background-color: white;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.citas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.accept,
+.decline {
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.accept {
+    background-color: #c85a83;
+}
+
+.accept:hover {
+    background-color: #e06d98;
+    transform: scale(1.05);
+}
+
+.decline {
+    background-color: #a94667;
+}
+
+.decline:hover {
+    background-color: #bf5c7b;
+    transform: scale(1.05);
+}

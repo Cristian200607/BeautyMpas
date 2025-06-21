@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/assets/styles/cssProfesional/miCuenta.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <button class="abrir-menu" id="abrir"><i class="bi bi-list"></i></button>
+        <nav class="nav" id="nav">
+          <button class="cerrar-menu" id="cerrar"><i class="bi bi-x"></i></button>
+          <ul class="nav-list">
+            <a href="/catalogo_profesionales/catalogo_profesionales.html">profesionales</a>
+            <a href="#">servicios</a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+          </ul>
+        </nav>
+        <img src="../imagenes/logosinfondo.png" alt="" class="logo">
+        <div class="enlaces">
+          <a href="/index.html">Inicio</a>
+          <a href="#">Contacto</a>
+          <a href="#">Soporte</a>
+          <a href="#">Login</a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="perfil">
+            <button id="btnEditar">
+                <i class="bi bi-pencil"></i>
+            </button>
+                <div class="foto">
+                    <img src="./imagenes_mi_cuenta/perfil.png" alt="foto de perfil" height="200px" width="200px">
+                </div>
+                <div class="datos">
+                    <div class="informacion">
+                        <h2 id="nombreDisplay"></h2>
+                        <input id="nombre" style="display: none;">
+                    </div>
+                    <div class="informacion">
+                        <h2 id="emailDisplay"></h2>
+                        <input id="email" style="display: none;">
+                    </div>
+                    <div class="informacion">
+                        <h2 id="direccionDisplay"></h2>
+                        <input id="direccion" style="display: none;">
+                    </div>
+                    <div class="informacion">
+                        <h2 id="telefonoDisplay"></h2>
+                        <input id="telefono" style="display: none;">
+                    </div>
+                    <div class="informacion" ><h2>Mas</h2></div>
+                    <button id="btnActualizar" style="display: none;">
+                        <i class="bi bi-save"></i> Guardar
+                    </button>
+                    
+                </div>
+        </div> 
+        <div class="portafolio">
+            <h1>Portafolio</h1>
+            <div class="collage">
+                <img src="./imagenes_mi_cuenta/collage1_mi_cuenta.jpg" alt="Foto 1">
+                <img src="./imagenes_mi_cuenta/collage2_mi_cuenta.jpg" alt="Foto 2">
+                <img src="./imagenes_mi_cuenta/collage3_mi_cuenta.jpg" alt="Foto 3">
+                <img src="./imagenes_mi_cuenta/collage4_mi_cuenta.jpg" alt="Foto 4">
+                <img src="./imagenes_mi_cuenta/collage5_mi_cuenta.jpg" alt="Foto 5">
+                <img src="./imagenes_mi_cuenta/collage6_mi_cuenta.jpg" alt="Foto 6">
+            </div>
+            <div class="subir-archivo">
+                <button id="btnSubirArchivo">Subir Archivo</button>
+                <div id="subidaForm" style="display: none; margin-top: 10px;">
+                    <input type="text" id="urlArchivo" placeholder="Ingrese URL de imagen o archivo">
+                    <button id="btnEnviarArchivo">Subir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="module" src="/frontend/services/servicesProfesional/setProfesional.js"></script>
+<script type="module" src="/frontend/components/ocultarH2.js"></script>
+</html>
+
+id="btnActualizar"

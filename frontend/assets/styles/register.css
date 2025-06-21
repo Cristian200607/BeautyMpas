@@ -1,0 +1,104 @@
+/* Fuente general */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Reset general */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fdd1e4;
+  color: #333;
+}
+
+/* Header */
+
+
+/* Contenedor principal */
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+ 
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffc0ea;
+  font-weight: 600;
+}
+
+/* Campos de datos */
+.datos label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+.datos input,
+.datos select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+
+
+.datos input:focus,
+.datos select:focus {
+  border-color: #db7ab6;
+  outline: none;
+}
+
+/* Botón registrar */
+.btn-registrar {
+  width: 100%;
+  padding: 12px;
+  background-color: #f79ed1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-registrar:hover {
+  background-color: #f7bbe3;
+}
+.campo-password {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.campo-password input {
+  width: 100%;
+  padding-right: 40px; /* espacio para el icono */
+  box-sizing: border-box;
+}
+
+.campo-password i {
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+  color: black;
+}

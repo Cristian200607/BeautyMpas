@@ -1,0 +1,315 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #333;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+.info {
+    margin-bottom: 20px;
+}
+.info h1 {
+    color: #f48ca7;
+}
+.info p {
+    color: #666;
+}
+/* Contenedor principal del carrusel */
+.swiper {
+  position: relative;
+    width: 100%;
+    max-width: 100%; /* Ajustar el ancho máximo */
+    height: 50vh; /* Un poco menos de la mitad de la página */
+    overflow: hidden; /* Oculta elementos fuera del área visible */
+    position: relative;
+    margin: 20px auto;
+    background: linear-gradient(135deg, #ffe4e9, #fff);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+/* Wrapper de los slides */
+.swiper-wrapper {
+    display: flex; /* Alinea los elementos horizontalmente */
+    animation: scroll-infinite 20s linear infinite; /* Animación infinita para desplazamiento */
+}
+
+/* Cada slide dentro del carrusel */
+.swiper-slide {
+    flex: 0 0 80%; /* Cada slide ocupa el 100% del contenedor */
+    height: 50%; /* Ocupa toda la altura del carrusel */
+    display: flex; /* Asegura que los hijos (imágenes) se alineen correctamente */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Imágenes dentro de los slides */
+.swiper-slide img {
+    display: block;
+    width: 100%; /* La imagen ocupa todo el ancho del slide */
+    height: 20%; /* La imagen ocupa toda la altura del slide */
+    object-fit: cover; /* Recorta y ajusta la imagen sin deformarla */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Hover en las imágenes */
+.swiper-slide img:hover {
+    transform: scale(1.05);
+}
+
+/* Animación infinita */
+@keyframes scroll-infinite {
+    0% {
+        transform: translateX(0); /* Posición inicial */
+    }
+    100% {
+        transform: translateX(-100%); /* Desplazarse completamente a la izquierda */
+    }
+}
+
+/* Responsivo: Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .swiper {
+        height: 30vh; /* Reducir altura en pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    .swiper {
+        height: 25vh; /* Reducir altura en pantallas pequeñas */
+    }
+}
+.map img {
+    width: 90%;
+    margin-left: 5%;
+    border: #666 solid 1px;
+    border-radius: 10px;
+}
+.mapa {
+    padding: 20px;
+    
+
+}
+.Contenido {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .Contenido h1 {
+    font-size: 2.5em;
+    color: #e249a2;
+    margin-bottom: 20px;
+  }
+  
+  .Contenido p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #333;
+    background-color: #fadded;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(202, 59, 143, 0.05);
+    text-align: justify;
+  }
+  
+button {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #f48ca7;
+    color: white;               /* Texto blanco para mejor contraste */
+    border: none;               /* Sin borde */
+    padding: 10px 20px;         /* Espaciado interno */
+    border-radius: 8px;         /* Bordes redondeados */
+    font-size: 25px;            /* Tamaño del texto */
+    cursor: pointer;            /* Cambia el cursor al pasar */
+    transition: all 0.3s ease;  /* Animación suave para cambios */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  }
+  
+  button:hover {
+    background-color: #e37395;   /* Color más fuerte al pasar el mouse */
+    transform: scale(1.05);      /* Ligeramente más grande al hacer hover */
+  }
+  /* Sección: Cómo Funciona */
+.como-funciona {
+    padding: 60px 5px;
+    background-color: #fdedf2;
+    text-align: center;
+    border-radius: 20px;
+  }
+  
+  .como-funciona .steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .step {
+    background-color: #ffcde1;
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(202, 59, 143, 0.1);
+  }
+  
+  /* Sección: Testimonios */
+  .testimonios {
+    padding: 60px 20px;
+    background-color: #ffffff;
+    text-align: center;
+  }
+  
+  .testimonios .testimonio {
+    background-color: #fff5fa;
+    border-left: 12px solid #ca3b8f;
+    padding: 20px;
+    margin: 10px auto;
+    border-radius: 10px;
+    max-width: 700px;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  
+  .testimonios .testimonio strong {
+    display: block;
+    margin-top: 10px;
+    color: #b02d79;
+  }
+  
+  /* Sección: Registro */
+  .registro {
+    padding: 60px 20px;
+    background-color: #fef1f7;
+    text-align: center;
+  }
+  
+  .registro-opciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+  }
+  
+  .registro-opciones > div {
+    background-color: white;
+    border: 2px solid #f7c7e1;
+    padding: 20px;
+    border-radius: 15px;
+    width: 280px;
+    box-shadow: 0 4px 10px rgba(202, 59, 143, 0.08);
+  }
+  
+  .btn {
+    display: inline-block;
+    margin-top: 15px;
+    background-color: #f07cbf;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #b02d79;
+  }
+  
+  .btn-secondary {
+    background-color: #f07cbf;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #e073ae;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .como-funciona .steps,
+    .registro-opciones {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  /* Redes Sociales */
+.redes-sociales {
+    background-color: #fff0f6;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .redes-sociales h2 {
+    color: #ca3b8f;
+    margin-bottom: 20px;
+  }
+  
+  .iconos-redes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* 👈 Este valor controla el espacio entre íconos */
+    margin: 30px 0;
+  }
+  
+  .iconos-redes img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .iconos-redes img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Misión y Visión */
+  .mision-vision {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #fef1f7;
+    padding: 60px 20px;
+    gap: 40px;
+  }
+  
+  .mision-vision .bloque {
+    max-width: 400px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(202, 59, 143, 0.08);
+  }
+  
+  .mision-vision h2 {
+    color: #b02d79;
+    margin-bottom: 10px;
+  }
+  
+  /* Centrado de Footer */
+  footer {
+    background-color: #fdfdfd;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 20px;
+    border: #666 ridge 1px;
+    box-shadow: #666 0 4px 8px;
+  }
+  
+  
+  

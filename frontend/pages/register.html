@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link rel="stylesheet" href="../assets/styles/register.css">
+  <link rel="stylesheet" href="../utils/header.css">
+</head>
+<div id="header-container"></div>
+<body>
+  <div class="main-content">
+    <main class="main-container">
+      <div class="container">
+        <div class="datos">
+          <form id="registerForm">
+            <h1>Crea tu cuenta </h1>
+            
+            
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Escriba su nombre de usuario">
+            <p>Tipo de documento:</p>
+            <select id="tipo_documento">
+              <option value="1">C.C</option>
+              <option value="2">T.I</option>
+              <option value="3">Carnet de Extranjería</option>
+            </select>
+
+            <label for="document">Numero de Documento:</label>
+            <input type="number" id="documento" placeholder="Escriba su documento">
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Escriba su correo">
+    
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" id="direccion" placeholder="Escriba su ciudad">
+    
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="telefono" placeholder="Escriba su dirección">
+    
+           <!-- Asegúrate de incluir Font Awesome en tu página -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+         <label for="contraseña">Contraseña</label>
+          <div class="campo-password">
+            <input type="password" id="contraseña" placeholder="Escriba su contraseña">
+            <i class="fa-solid fa-eye" id="togglePassword"></i>
+          </div>
+
+          <p>Tipo de Rol:</p>
+          <select id="rol">
+            <option value="1">Admin</option>
+            <option value="2">Profesional</option>
+            <option value="3">Cliente</option>
+          </select>
+    
+          <a href="../pages/login.html">
+            <button class="btn-registrar" type="submit">Registrar</button>
+          </a>
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+  <script>
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('contraseña');
+
+    togglePassword.addEventListener('click', function () {
+      // Alternar el tipo de input
+      const isPassword = passwordInput.type === 'password';
+      passwordInput.type = isPassword ? 'text' : 'password';
+
+      // Alternar el ícono (ojo abierto/cerrado)
+      this.classList.toggle('fa-eye');
+      this.classList.toggle('fa-eye-slash');
+    });
+  </script>
+  <script src="../services/register.js"></script>
+  <script src="../utils/header.js"></script>
+</html>
