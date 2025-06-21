@@ -1,5 +1,5 @@
 document.getElementById('FormLogin').addEventListener('submit', async (e) => {
-    e.preventDefault(); // ✅ CORREGIDO
+    e.preventDefault();
 
     const email = document.getElementById('email').value.trim();
     const contraseña = document.getElementById('contraseña').value.trim();
@@ -16,24 +16,31 @@ document.getElementById('FormLogin').addEventListener('submit', async (e) => {
         console.log('Respuesta del servidor:', data);
 
         if (res.status === 200) {
-            localStorage.setItem('rol', data.rol);
-            localStorage.setItem('email', email);
-            console.log('Se inició sesión correctamente.');
+            // 💾 Guarda objeto usuario completo en localStorage
+            const usuario = {
+                email: email,
+                rol: data.rol,
+                nombre: data.nombre  // Asegúrate que el backend lo devuelva
+            };
+
+            localStorage.setItem('usuario', JSON.stringify(usuario));
 
             botones.forEach(btn => {
                 btn.setAttribute('data-email', email);
             });
 
-            if(data.rol === 1){
-                window.location.href = '../pages/home.html'
-            } 
-            if(data.rol === 2){
-                window.location.href = '../pages/profesional/miCuenta.html'
-            } 
-            if (data.rol === 3){
-                window.location.href = '../pages/home.html';
+            // 🚪 Redirección por rol
+            switch(data.rol) {
+                case 1:
+                case 3:
+                    window.location.href = '../pages/home.html';
+                    break;
+                case 2:
+                    window.location.href = '../pages/profesional/miCuenta.html';
+                    break;
+                default:
+                    window.location.href = '../pages/home.html';
             }
-          
 
         } else {
             alert(data.message);

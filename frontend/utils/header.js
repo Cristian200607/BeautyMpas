@@ -15,7 +15,23 @@ function loadHeader() {
       cerrar.addEventListener("click", () => {
         nav.classList.remove("visible");
       });
+      const usuarios = JSON.parse(localStorage.getItem('usuario'));
+      const userLinks = document.getElementById('user-links');
+
+      if(usuarios) {
+        userLinks.innerHTML = `
+        <span>Hola, ${usuarios.nombre}</span>
+        <a href="#">Contacto</a>
+        <a href="#">Soporte</a>
+        <a href="/frontend/pages/login.html" id="logout-link">Cerrar sesion</a>
+        `;
+        document.getElementById('logout-link').addEventListener('click', () => {
+          localStorage.removeItem('usuarios');
+          location.reload();
+        });
+      }
     });
+  
 }
 
 document.addEventListener('DOMContentLoaded', loadHeader);
