@@ -76,3 +76,8 @@ export const obtenerRolPorId = async (id) => {
     );
     return rows[0]?.id_rol;
 };
+
+export const getCategorias = async () => {
+  const [rows] = await pool.query('select * from categoria');
+  return rows;
+};
