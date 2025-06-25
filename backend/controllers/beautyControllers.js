@@ -105,11 +105,19 @@ export const deleteProfesionales = async (req, res) => {
 
 //funcion login
 export const login = async (req, res) => {
-    const {email, contraseña } = req.body;
+    const { email, contraseña } = req.body;
+
     const user = await buscarUsuariosPorEmail(email);
-    if(!user) return res.status(404).json({ message: 'usuario no encontrado'});
+    if (!user) return res.status(404).json({ message: 'usuario no encontrado' });
+
     const esValido = await bcrypt.compare(contraseña, user.contraseña);
-    if(!esValido) return res.status(401).json({ message: 'contraseña incorrecta'});
+    if (!esValido) return res.status(401).json({ message: 'contraseña incorrecta' });
+
     const rol = await obtenerRolPorId(user.id_rol);
-    res.status(200).json({ message: 'Login Exitoso', rol});
+
+    res.status(200).json({ 
+        message: 'Login Exitoso', 
+        rol, 
+        nombre: user.nombre // ✅ devuelto al frontend
+    });
 };

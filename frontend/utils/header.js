@@ -15,6 +15,25 @@ function loadHeader() {
       cerrar.addEventListener("click", () => {
         nav.classList.remove("visible");
       });
+
+      const usuarios = JSON.parse(localStorage.getItem('usuario')); // 👈 nombre correcto
+      const userLinks = document.getElementById('user-links');
+
+      if (usuarios) {
+        userLinks.innerHTML = `
+          <span>Hola, ${usuarios.nombre}</span>
+          <a href="#">Contacto</a>
+          <a href="#">Soporte</a>
+          <a href="#" id="logout-link">Cerrar sesión</a>
+        `;
+
+        document.getElementById('logout-link').addEventListener('click', (e) => {
+          e.preventDefault(); 
+          localStorage.removeItem('usuario'); 
+          window.location.href = "/frontend/pages/login.html";
+        });
+
+      }
     });
 }
 
