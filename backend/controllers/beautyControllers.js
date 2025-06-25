@@ -6,7 +6,8 @@ import{ crearUsuario,
         updateProfesional,
         deleteProfesional,
         obtenerRolPorId, 
-        buscarUsuariosPorEmail 
+        buscarUsuariosPorEmail,
+        getCategorias as obtenerCategoriasDesdeBD
       } 
 from '../models/beautyModel.js';
 
@@ -102,6 +103,18 @@ export const deleteProfesionales = async (req, res) => {
         res.status(500).json({ message: 'Error interno del servidor' });
     }
 };
+
+// funcion get servicios
+export const getCategorias = async (req, res) => {
+  try {
+    const categorias = await obtenerCategoriasDesdeBD(); // ✅ usamos el nombre renombrado
+    res.json({ categorias });
+  } catch (error) {
+    console.error('Error obteniendo las categorías:', error);
+    res.status(500).json({ error: 'Error del servidor' });
+  }
+};
+
 
 //funcion login
 export const login = async (req, res) => {
