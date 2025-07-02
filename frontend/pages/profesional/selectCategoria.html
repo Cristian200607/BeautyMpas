@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seleccionar Categorías</title>
+  <link rel="stylesheet" href="/frontend/assets/styles/cssProfesional/selectCategoria.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="titulo">Por favor seleccione las categorías que sabe</h1>
+
+    <div class="formulario">
+      <select id="select-categorias">
+        <option value="">Seleccione una categoría</option>
+      </select>
+      <button id="btnAgregar" class="btn-agregar">Agregar</button>
+    </div>
+
+    <table id="tablaCategorias">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Categoría</th>
+          <th>Acciones</th> <!-- ✅ Esta columna es requerida por tu JS -->
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <button class="btn-finalizar" id="btnFinalizar">Finalizar</button>
+  </div>
+
+  <script type="module" src="/frontend/scripts/profesional/getCategorias.js"></script>
+</body>
+</html>

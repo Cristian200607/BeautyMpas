@@ -5,7 +5,7 @@ const idRolProfesional = 2;
 const idRolCliente = 3;
 export const crearUsuario = async(id_rol, id_tipo_documento, nombre, email, direccion, telefono, documento, contraseña) => {
     if (id_rol === idRolProfesional) {
-            const [result] = await pool.query(
+        const [result] = await pool.query(
             'insert into profesional (id_rol, id_tipo_documento, nombre, email, direccion, telefono, documento, contraseña) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
             [id_rol, id_tipo_documento, nombre, email, direccion, telefono, documento, contraseña]
         );
@@ -25,6 +25,16 @@ export const crearUsuario = async(id_rol, id_tipo_documento, nombre, email, dire
         return result.insertId;
     }
 };
+
+export const postCategoriaProfesional = async (id_profesional, id_categoria) => {
+  const [result] = await pool.query(
+    'INSERT INTO profesional_categoria (id_profesional, id_categoria) VALUES (?, ?)',
+    [id_profesional, id_categoria]
+  );
+  return result.insertId;
+};
+
+
 
 export const getProfesional = async () => {
     const [rows] = await pool.query(
@@ -77,7 +87,3 @@ export const obtenerRolPorId = async (id) => {
     return rows[0]?.id_rol;
 };
 
-export const getCategorias = async () => {
-  const [rows] = await pool.query('select * from categoria');
-  return rows;
-};

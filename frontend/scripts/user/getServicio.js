@@ -1,16 +1,10 @@
-const API_URL_CAT = 'http://localhost:3000/api/categorias';
+import {getCategoria} from '../../apis/apisCategoria.js'
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const contenedor = document.querySelector('.contenedor-servicios');
-
-  fetch(API_URL_CAT)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Error en la respuesta de la red");
-      }
-      return response.json();
-    })
-    .then(data => {
+  
+    try{
+      const data = await getCategoria();
       const categorias = data.categorias;
 
       contenedor.innerHTML = ''; // Limpiar contenido previo
@@ -21,9 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
         tarjeta.innerHTML = `<div class="tarjeta"><p>${cat.categoria}</p></div>`;
         contenedor.appendChild(tarjeta);
       });
-    })
-    .catch(error => {
+    }
+    catch(error) {
       console.error("Hubo un problema con la solicitud Fetch:", error);
       contenedor.innerHTML = '<p>Error al cargar las categorías.</p>';
-    });
+    };
 });
