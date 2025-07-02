@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
-import{ crearUsuario, 
+import{ crearUsuario,
+        postCategoriaProfesional,
         getProfesional, 
         getProfesionalById,
         getProfesionalByEmail,
@@ -7,9 +8,10 @@ import{ crearUsuario,
         deleteProfesional,
         obtenerRolPorId, 
         buscarUsuariosPorEmail,
-        getCategorias as obtenerCategoriasDesdeBD
       } 
-from '../models/beautyModel.js';
+from '../models/profesionalModel.js';
+
+import {tieneCategoriasAsignadas} from '../controllers/categoriaControllers.js'
 
 
 export const getProfesionales = async (req, res) => {
@@ -71,6 +73,28 @@ export const registerUsuarios = async (req, res) =>{
     res.status(201).json({ message: 'usuario creado correctamete'});
 };
 
+
+export const postCategoriaProfesionales = async (req, res) => {
+  console.log('BODY:', req.body);
+  const { id_profesional, id_categorias } = req.body;
+
+  if (!id_profesional || !Array.isArray(id_categorias)) {
+    return res.status(400).json({ message: 'Datos inválidos' });
+  }
+
+  try {
+    for (const id_categoria of id_categorias) {
+      await postCategoriaProfesional(id_profesional, id_categoria);
+    }
+
+    res.status(201).json({ message: 'Categorías asignadas correctamente al profesional' });
+  } catch (error) {
+    console.error('Error al asignar categorías:', error);
+    res.status(500).json({ message: 'Error del servidor al asignar categorías' });
+  }
+};
+
+
 export const updateProfesionales = async (req, res) => {
     try {
         const { id } = req.params;
@@ -104,16 +128,7 @@ export const deleteProfesionales = async (req, res) => {
     }
 };
 
-// funcion get servicios
-export const getCategorias = async (req, res) => {
-  try {
-    const categorias = await obtenerCategoriasDesdeBD(); // ✅ usamos el nombre renombrado
-    res.json({ categorias });
-  } catch (error) {
-    console.error('Error obteniendo las categorías:', error);
-    res.status(500).json({ error: 'Error del servidor' });
-  }
-};
+
 
 
 //funcion login
@@ -128,9 +143,21 @@ export const login = async (req, res) => {
 
     const rol = await obtenerRolPorId(user.id_rol);
 
+    let tieneCategorias = false;
+    if (user.id_rol === 2) {
+      tieneCategorias = await tieneCategoriasAsignadas(user.id);
+    }
+
+    // ✅ Aquí sí puedes imprimir valores en consola para verificar
+    console.log('Usuario encontrado:', user);
+    console.log('Rol:', rol);
+
+    // ✅ Esta es la única forma correcta de enviar datos al frontend
     res.status(200).json({ 
         message: 'Login Exitoso', 
         rol, 
-        nombre: user.nombre // ✅ devuelto al frontend
+        id: user.id,
+        nombre: user.nombre,
+        tieneCategorias
     });
 };
