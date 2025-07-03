@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       categorias.forEach(cat => {
         const tarjeta = document.createElement('a');
-        tarjeta.href = `Info_servicios/${cat.categoria.toLowerCase()}.html`; // opcional
+        //tarjeta.href = `Info_servicios/${cat.categoria.toLowerCase()}.html`; // opcional
+        tarjeta.href = `/frontend/pages/user/catalogoProfesionales.html?id=${cat.id}`;
         tarjeta.innerHTML = `<div class="tarjeta"><p>${cat.categoria}</p></div>`;
         contenedor.appendChild(tarjeta);
       });

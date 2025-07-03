@@ -23,7 +23,7 @@ export async function postCategoriaProfesional(id_profesional, id_categorias) {
 
 
 export async function getProfesionalesPorCategoria(id_categoria) {
-  const res = await fetch(`${API_URL}/getProfesionalesByCategoria/${id_categoria}`);
+  const res = await fetch(`${API_URL_CAT}/getProfesionalesByCategoria/${id_categoria}`);
 
   if (!res.ok) {
     const error = await res.json();
