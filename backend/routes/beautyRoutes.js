@@ -5,7 +5,11 @@ import {login,
     updateProfesionales, 
     deleteProfesionales, 
     getProfesionalesByEmail, 
-    getCategorias, 
+    getCategorias,
+    obtenerCategoriaPorId,
+    crearCategoria,
+    actualizarCategoria,
+    eliminarCategoria,
     getAllClientes,
     getClientePorId,
     getClientePorEmail,
@@ -24,6 +28,10 @@ router.put('/updateProfesional/:id', updateProfesionales);
 router.delete('/deleteProfesional/:id', deleteProfesionales);
 router.post('/login', login);
 router.get('/categorias', getCategorias);
+router.get('/categoria/:id', obtenerCategoriaPorId);
+router.post('/categoria', crearCategoria);
+router.put('/categoria/:id', actualizarCategoria);
+router.delete('/categoria/:id', eliminarCategoria);
 router.get('/clientes', getAllClientes);
 router.get('/cliente/:id', getClientePorId);
 router.get('/cliente', getClientePorEmail); // ?email=...

@@ -132,8 +132,28 @@ export const deleteCliente = async (id) => {
   return rows;
 };
 
+// categorias
 
 export const getCategorias = async () => {
   const [rows] = await pool.query('select * from categoria');
   return rows;
+};
+
+export const getCategoriaById = async (id) => {
+  const [rows] = await pool.query('SELECT * FROM categoria WHERE id = ?', [id]);
+  return rows[0];
+};
+
+export const createCategoria = async (categoria) => {
+  const [result] = await pool.query('INSERT INTO categoria (categoria) VALUES (?)', [categoria]);
+  return { id: result.insertId, categoria };
+};
+
+export const updateCategoria = async (id, nuevaCategoria) => {
+  await pool.query('UPDATE categoria SET categoria = ? WHERE id = ?', [nuevaCategoria, id]);
+  return { id, categoria: nuevaCategoria };
+};
+
+export const deleteCategoria = async (id) => {
+  await pool.query('DELETE FROM categoria WHERE id = ?', [id]);
 };
