@@ -7,7 +7,12 @@ import{ crearUsuario,
         deleteProfesional,
         obtenerRolPorId, 
         buscarUsuariosPorEmail,
-        getCategorias as obtenerCategoriasDesdeBD
+        getCategorias as obtenerCategoriasDesdeBD,
+        getClientes,
+        getClienteById,
+        getClienteByEmail,
+        updateCliente,
+        deleteCliente
       } 
 from '../models/beautyModel.js';
 
@@ -112,6 +117,83 @@ export const getCategorias = async (req, res) => {
   } catch (error) {
     console.error('Error obteniendo las categorías:', error);
     res.status(500).json({ error: 'Error del servidor' });
+  }
+};
+
+// apartado clientes- admin
+
+export const getAllClientes = async (req, res) => {
+  try {
+    const clientes = await getClientes();
+    res.json({ clientes });
+  } catch (error) {
+    console.error('Error al obtener clientes:', error);
+    res.status(500).json({ message: 'Error del servidor' });
+  }
+};
+
+export const getClientePorId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const cliente = await getClienteById(id);
+
+    if (!cliente) {
+      return res.status(404).json({ message: 'Cliente no encontrado' });
+    }
+
+    res.status(200).json({ message: 'Cliente encontrado', cliente });
+  } catch (error) {
+    console.error('Error al obtener cliente por ID:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+};
+
+export const getClientePorEmail = async (req, res) => {
+  try {
+    const email = req.query.email;
+    if (!email) return res.status(400).json({ message: 'Email no proporcionado' });
+
+    const cliente = await getClienteByEmail(email);
+    if (!cliente) return res.status(404).json({ message: 'Cliente no encontrado' });
+
+    res.status(200).json({ message: 'Cliente encontrado', cliente });
+  } catch (error) {
+    console.error('Error al obtener cliente por email:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+};
+
+export const updateClientePorId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { nombre, email, telefono } = req.body;
+
+    const result = await updateCliente(id, { nombre, email, telefono });
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Cliente no encontrado' });
+    }
+
+    res.status(200).json({ message: 'Cliente actualizado correctamente' });
+  } catch (error) {
+    console.error('Error al actualizar cliente:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+};
+
+export const eliminarCliente = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await deleteCliente(id);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Cliente no encontrado' });
+    }
+
+    res.status(200).json({ message: 'Cliente eliminado correctamente' });
+  } catch (error) {
+    console.error('Error al eliminar cliente:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
   }
 };
 

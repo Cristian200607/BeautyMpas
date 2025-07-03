@@ -1,5 +1,17 @@
 import express from 'express';
-import {login, registerUsuarios, getProfesionales, getProfesionalesById, updateProfesionales, deleteProfesionales, getProfesionalesByEmail, getCategorias} from '../controllers/beautyControllers.js';
+import {login, 
+    registerUsuarios, getProfesionales, 
+    getProfesionalesById, 
+    updateProfesionales, 
+    deleteProfesionales, 
+    getProfesionalesByEmail, 
+    getCategorias, 
+    getAllClientes,
+    getClientePorId,
+    getClientePorEmail,
+    updateClientePorId,
+    eliminarCliente
+    } from '../controllers/beautyControllers.js';
 
 const router = express.Router();
 
@@ -11,6 +23,11 @@ router.put('/updateProfesional/:id', updateProfesionales);
 router.delete('/deleteProfesional/:id', deleteProfesionales);
 router.post('/login', login);
 router.get('/categorias', getCategorias);
+router.get('/clientes', getAllClientes);
+router.get('/cliente/:id', getClientePorId);
+router.get('/cliente', getClientePorEmail); // ?email=...
+router.put('/cliente/:id', updateClientePorId);
+router.delete('/cliente/:id', eliminarCliente);
 
 
 export default router;
