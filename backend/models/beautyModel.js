@@ -27,11 +27,22 @@ export const crearUsuario = async(id_rol, id_tipo_documento, nombre, email, dire
 };
 
 export const getProfesional = async () => {
-    const [rows] = await pool.query(
-        'SELECT * FROM profesional'
-    );
-    return rows;
-}
+  const [rows] = await pool.query(`
+    SELECT 
+      p.id,
+      p.nombre,
+      p.email,
+      p.direccion,
+      p.telefono,
+      c.categoria AS nombre_categoria,
+      s.servicio AS nombre_servicio
+    FROM profesional p
+    LEFT JOIN categoria c ON p.id_categoria = c.id
+    LEFT JOIN servicio s ON p.id_servicio = s.id
+  `);
+  return rows;
+};
+
 
 export const getProfesionalById = async (id) => {
     const [rows] = await pool.query(
