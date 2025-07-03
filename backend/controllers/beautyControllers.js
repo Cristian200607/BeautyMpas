@@ -17,7 +17,11 @@ import{ crearUsuario,
         getClienteByEmail,
         updateCliente,
         deleteCliente,
-        getTiposDocumento as getTiposDocumentoFromDB
+        getTiposDocumento as getTiposDocumentoFromDB,
+        getServicios,
+        crearServicio,
+        actualizarServicio,
+        eliminarServicio
       } 
 from '../models/beautyModel.js';
 
@@ -175,6 +179,65 @@ export const eliminarCategoria = async (req, res) => {
     res.status(500).json({ error: 'Error al eliminar categoría' });
   }
 };
+
+// funciones servicios
+
+export const getAllServicios = async (req, res) => {
+  try {
+    const servicios = await getServicios();
+    res.json(servicios);
+  } catch (error) {
+    console.error('Error obteniendo servicios:', error);
+    res.status(500).json({ error: 'Error del servidor' });
+  }
+};
+
+export const crearNuevoServicio = async (req, res) => {
+  try {
+    const { servicio, precio, id_categorias } = req.body;
+    const insertId = await crearServicio(servicio, precio, id_categorias);
+    res.status(201).json({ message: 'Servicio creado', id: insertId });
+  } catch (error) {
+    console.error('Error al crear servicio:', error);
+    res.status(500).json({ error: 'Error del servidor' });
+  }
+};
+
+export const actualizarServicioController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { servicio, precio, id_categorias } = req.body;
+
+    const filasAfectadas = await actualizarServicio(id, { servicio, precio, id_categorias });
+
+    if (filasAfectadas === 0) {
+      return res.status(404).json({ error: 'Servicio no encontrado' });
+    }
+
+    res.json({ mensaje: 'Servicio actualizado correctamente' });
+  } catch (err) {
+    console.error('Error en actualizarServicioController:', err);
+    res.status(500).json({ error: 'Error al actualizar servicio' });
+  }
+};
+
+export const eliminarServicioController = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const filasAfectadas = await eliminarServicio(id);
+
+    if (filasAfectadas === 0) {
+      return res.status(404).json({ error: 'Servicio no encontrado para eliminar' });
+    }
+
+    res.json({ mensaje: 'Servicio eliminado correctamente' });
+  } catch (err) {
+    console.error('Error en eliminarServicioController:', err);
+    res.status(500).json({ error: 'Error al eliminar servicio' });
+  }
+};
+
 
 // funcion get tipo documentos 
 export const getTiposDocumento = async (req, res) => {

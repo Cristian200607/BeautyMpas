@@ -157,3 +157,37 @@ export const updateCategoria = async (id, nuevaCategoria) => {
 export const deleteCategoria = async (id) => {
   await pool.query('DELETE FROM categoria WHERE id = ?', [id]);
 };
+
+// servicios
+
+export const getServicios = async () => {
+  const [rows] = await pool.query(`
+    SELECT s.id, s.servicio, s.precio, c.categoria AS nombre_categoria, s.id_categorias
+    FROM servicio s
+    JOIN categoria c ON s.id_categorias = c.id
+  `);
+  return rows;
+};
+
+export const crearServicio = async (servicio, precio, id_categorias) => {
+  const [result] = await pool.query(
+    'INSERT INTO servicio (servicio, precio, id_categorias) VALUES (?, ?, ?)',
+    [servicio, precio, id_categorias]
+  );
+  return result.insertId;
+};
+
+export const actualizarServicio = async (id, { servicio, precio, id_categorias }) => {
+    console.log('acualizando servicio con ID:', id);
+  const [result] = await pool.query(
+    `UPDATE servicio SET servicio = ?, precio = ?, id_categorias = ? WHERE id = ?`,
+    [servicio, precio, id_categorias, id]
+  );
+  return result.affectedRows;
+};
+
+export const eliminarServicio = async (id) => {
+    console.log('Eliminando servicio con ID:', id);
+  const [result] = await pool.query(`DELETE FROM servicio WHERE id = ?`, [id]);
+  return result.affectedRows;
+};

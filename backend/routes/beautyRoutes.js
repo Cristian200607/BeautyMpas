@@ -15,7 +15,11 @@ import {login,
     getClientePorEmail,
     updateClientePorId,
     eliminarCliente,
-    getTiposDocumento
+    getTiposDocumento,
+    getAllServicios,
+    crearNuevoServicio,
+    actualizarServicioController,      
+    eliminarServicioController 
     } from '../controllers/beautyControllers.js';
 
 const router = express.Router();
@@ -38,6 +42,10 @@ router.get('/cliente', getClientePorEmail); // ?email=...
 router.put('/cliente/:id', updateClientePorId);
 router.delete('/cliente/:id', eliminarCliente);
 router.get('/tipos-documento', getTiposDocumento);
+router.get('/servicios', getAllServicios);
+router.post('/servicios', crearNuevoServicio);
+router.put('/servicios/:id', actualizarServicioController); 
+router.delete('/servicios/:id', eliminarServicioController);    
 
 
 export default router;
