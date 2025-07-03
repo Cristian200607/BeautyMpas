@@ -87,6 +87,13 @@ export const obtenerRolPorId = async (id) => {
     );
     return rows[0]?.id_rol;
 };
+// modelo tipo documento
+
+export const getTiposDocumento = async () => {
+  const [rows] = await pool.query('SELECT * FROM tipo_documento');
+
+  return rows;
+};
 
 // MODELO: Clientes
 

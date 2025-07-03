@@ -12,7 +12,8 @@ import{ crearUsuario,
         getClienteById,
         getClienteByEmail,
         updateCliente,
-        deleteCliente
+        deleteCliente,
+        getTiposDocumento as getTiposDocumentoFromDB
       } 
 from '../models/beautyModel.js';
 
@@ -120,6 +121,17 @@ export const getCategorias = async (req, res) => {
   }
 };
 
+// funcion get tipo documentos 
+export const getTiposDocumento = async (req, res) => {
+  try {
+    const tipos = await getTiposDocumentoFromDB();
+    res.status(200).json({ tipos });
+  } catch (error) {
+    console.error('Error al obtener tipos de documento:', error);
+    res.status(500).json({ message: 'Error del servidor' });
+  }
+};
+
 // apartado clientes- admin
 
 export const getAllClientes = async (req, res) => {
@@ -166,9 +178,9 @@ export const getClientePorEmail = async (req, res) => {
 export const updateClientePorId = async (req, res) => {
   try {
     const { id } = req.params;
-    const { nombre, email, telefono } = req.body;
+    const { nombre, email, telefono, documento, id_tipo_documento } = req.body;
 
-    const result = await updateCliente(id, { nombre, email, telefono });
+    const result = await updateCliente(id, { nombre, email, telefono, documento, id_tipo_documento });
 
     if (result.affectedRows === 0) {
       return res.status(404).json({ message: 'Cliente no encontrado' });

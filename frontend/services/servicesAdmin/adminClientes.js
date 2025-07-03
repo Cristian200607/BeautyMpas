@@ -1,8 +1,22 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const res = await fetch('http://localhost:3000/api/clientes'); // Esta ruta está bien
-    const data = await res.json();
-    const clientes = data.clientes;
+    // Obtenemos clientes y tipos de documento al mismo tiempo
+    const [resClientes, resTipos] = await Promise.all([
+      fetch('http://localhost:3000/api/clientes'),
+      fetch('http://localhost:3000/api/tipos-documento')
+    ]);
+
+    const dataClientes = await resClientes.json();
+    const dataTipos = await resTipos.json();
+
+    const clientes = dataClientes.clientes;
+    const tiposDocumento = dataTipos.tipos;
+
+    // Mapeamos los tipos por id para acceder rápido
+    const mapaTipos = {};
+    tiposDocumento.forEach(td => {
+      mapaTipos[td.id] = td.nombre;
+    });
 
     const tbody = document.getElementById('clientes-body');
     clientes.forEach((cli) => {
@@ -12,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <td>${cli.email}</td>
         <td>${cli.telefono || ''}</td>
         <td>${cli.documento}</td>
-        <td>${cli.id_tipo_documento || ''}</td>
+        <td>${mapaTipos[cli.id_tipo_documento] || ''}</td>
         <td>
           <button onclick="editarCliente(${cli.id})">✏️ Editar</button>
           <button onclick="eliminarCliente(${cli.id})">🗑️ Eliminar</button>
@@ -21,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       tbody.appendChild(row);
     });
   } catch (err) {
-    console.error('Error al cargar clientes:', err);
+    console.error('Error al cargar clientes o tipos de documento:', err);
   }
 });
 
@@ -31,7 +45,6 @@ function cerrarModal() {
 
 async function editarCliente(id) {
   try {
-    // 🔁 CAMBIO: "cliente" en singular
     const res = await fetch(`http://localhost:3000/api/cliente/${id}`);
     const data = await res.json();
     const c = data.cliente;
@@ -62,7 +75,6 @@ document.getElementById('edit-form').addEventListener('submit', async (e) => {
   };
 
   try {
-    // 🔁 CAMBIO: "cliente" en singular
     const res = await fetch(`http://localhost:3000/api/cliente/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -82,7 +94,6 @@ async function eliminarCliente(id) {
   if (!confirm('¿Deseas eliminar este cliente?')) return;
 
   try {
-    // 🔁 CAMBIO: "cliente" en singular
     const res = await fetch(`http://localhost:3000/api/cliente/${id}`, {
       method: 'DELETE'
     });

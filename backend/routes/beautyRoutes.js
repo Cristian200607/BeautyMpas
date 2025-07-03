@@ -10,7 +10,8 @@ import {login,
     getClientePorId,
     getClientePorEmail,
     updateClientePorId,
-    eliminarCliente
+    eliminarCliente,
+    getTiposDocumento
     } from '../controllers/beautyControllers.js';
 
 const router = express.Router();
@@ -28,6 +29,7 @@ router.get('/cliente/:id', getClientePorId);
 router.get('/cliente', getClientePorEmail); // ?email=...
 router.put('/cliente/:id', updateClientePorId);
 router.delete('/cliente/:id', eliminarCliente);
+router.get('/tipos-documento', getTiposDocumento);
 
 
 export default router;
