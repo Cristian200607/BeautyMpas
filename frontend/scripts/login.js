@@ -27,11 +27,7 @@ document.getElementById('FormLogin').addEventListener('submit', async (e) => {
                 window.location.href = '../pages/home.html';
                 break;
             case 2:
-                if (data.tieneCategorias) {
-                    window.location.href = '/frontend/pages/profesional/miCuenta.html';
-                } else {
-                    window.location.href = '/frontend/pages/profesional/selectCategoria.html';
-                }
+                window.location.href = '/frontend/pages/profesional/miCuenta.html';
                 break;
             default:
                 window.location.href = '../pages/home.html';

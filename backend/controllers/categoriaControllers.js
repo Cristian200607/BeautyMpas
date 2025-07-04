@@ -1,4 +1,4 @@
-import{ getCategoria, contarCategoriasPorProfesional, getIdProfesionalesPorCategoria, getUsuariosPorIdProfesional, getProfesionalesPorIds} from '../models/categoriaModel.js';
+import{ getCategoria, contarCategoriasPorProfesional, getIdProfesionalesPorCategoria, getProfesionalesPorIds} from '../models/categoriaModel.js';
 
 
 // funcion get servicios
@@ -25,13 +25,9 @@ export const getProfesionalesPorCategoria = async (req, res) => {
   try {
     // Paso 1: obtener los ids de usuario desde la categoría
     const idsRaw = await getIdProfesionalesPorCategoria(id_categoria); // te da usuarios.id
-    const idsUsuario = idsRaw.map(row => row.id_profesional); // Ojo: aquí es el id del usuario, no profesional
+    const idsProfesional = idsRaw.map(row => row.id_profesional); // Ojo: aquí es el id del usuario, no profesional
 
-    console.log('🎯 IDs de usuario desde profesional_categoria:', idsUsuario);
-
-    // Paso 2: obtener los id_profesional reales desde la tabla usuarios
-    const idsProfesional = await getUsuariosPorIdProfesional(idsUsuario);
-    console.log('🔁 IDs reales de profesional desde usuarios:', idsProfesional);
+    console.log('🎯 IDs de usuario desde profesional_categoria:', idsProfesional);
 
     // Paso 3: obtener los datos desde la tabla profesional
     const profesionales = await getProfesionalesPorIds(idsProfesional);
