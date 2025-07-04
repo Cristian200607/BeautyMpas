@@ -26,10 +26,10 @@ export const crearUsuario = async(id_rol, id_tipo_documento, nombre, email, dire
     }
 };
 
-export const postCategoriaProfesional = async (id_profesional, id_categoria) => {
+export const postCategoriaProfesional = async (id_profesional, id_categoria, servicio, precio) => {
   const [result] = await pool.query(
-    'INSERT INTO profesional_categoria (id_profesional, id_categoria) VALUES (?, ?)',
-    [id_profesional, id_categoria]
+    'INSERT INTO servicio (id_profesional, id_categoria, servicio, precio) VALUES (?, ?, ?, ?)',
+    [id_profesional, id_categoria, servicio, precio]
   );
   return result.insertId;
 };

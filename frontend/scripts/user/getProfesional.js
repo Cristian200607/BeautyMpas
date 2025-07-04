@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const boton = box.querySelector('.btnVer');
         boton.addEventListener('click', () => {
-          window.location.href = `/frontend/pages/user/cuentaProfesional.html?id=${profesional.id}`;
+          window.location.href = `/frontend/pages/user/cuentaProfesional.html?id=${profesional.id}&categoriaId=${idCategoria}`;
         });
 
         contenedor.appendChild(box);

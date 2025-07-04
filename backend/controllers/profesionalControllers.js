@@ -75,22 +75,27 @@ export const registerUsuarios = async (req, res) =>{
 
 
 export const postCategoriaProfesionales = async (req, res) => {
-  console.log('BODY:', req.body);
-  const { id_profesional, id_categorias } = req.body;
+  const servicios = req.body;
 
-  if (!id_profesional || !Array.isArray(id_categorias)) {
-    return res.status(400).json({ message: 'Datos inválidos' });
+  if (!Array.isArray(servicios) || servicios.length === 0) {
+    return res.status(400).json({ message: 'Datos inválidos. Se esperaba un array de servicios.' });
   }
 
   try {
-    for (const id_categoria of id_categorias) {
-      await postCategoriaProfesional(id_profesional, id_categoria);
+    for (const servicio of servicios) {
+      const { id_profesional, id_categoria, servicio: nombre, precio } = servicio;
+
+      if (!id_profesional || !id_categoria || !nombre || !precio) {
+        return res.status(400).json({ message: 'Faltan campos obligatorios.' });
+      }
+
+      await postCategoriaProfesional(id_profesional, id_categoria, nombre, precio);
     }
 
-    res.status(201).json({ message: 'Categorías asignadas correctamente al profesional' });
+    res.status(201).json({ message: 'Servicios registrados correctamente.' });
   } catch (error) {
-    console.error('Error al asignar categorías:', error);
-    res.status(500).json({ message: 'Error del servidor al asignar categorías' });
+    console.error('Error al registrar servicios:', error);
+    res.status(500).json({ message: 'Error al registrar servicios.' });
   }
 };
 
@@ -143,11 +148,6 @@ export const login = async (req, res) => {
 
     const rol = await obtenerRolPorId(user.id_rol);
 
-    let tieneCategorias = false;
-    if (user.id_rol === 2) {
-      tieneCategorias = await tieneCategoriasAsignadas(user.id);
-    }
-
     // ✅ Aquí sí puedes imprimir valores en consola para verificar
     console.log('Usuario encontrado:', user);
     console.log('Rol:', rol);
@@ -157,7 +157,7 @@ export const login = async (req, res) => {
         message: 'Login Exitoso', 
         rol, 
         id: user.id,
+        id_profesional: user.id_profesional,
         nombre: user.nombre,
-        tieneCategorias
     });
 };
