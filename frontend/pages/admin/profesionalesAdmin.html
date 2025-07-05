@@ -1,0 +1,46 @@
+<!-- frontend/profesionales.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Listado de Profesionales</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Listado de Profesionales</h1>
+  <table border="1">
+    <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Dirección</th>
+    <th>Teléfono</th>
+    <th>Categoría</th>
+    <th>Servicio</th>
+    <th>Acciones</th>
+  </tr>
+</thead>
+    <tbody id="profesionales-body">
+      <!-- Aquí se insertan los profesionales desde admin.js -->
+    </tbody>
+  </table>
+
+  <form id="form-editar-profesional" style="display: none; margin-top: 20px;">
+  <h2>Editar Profesional</h2>
+  <input type="hidden" id="edit-id" />
+  <input type="text" id="edit-nombre" placeholder="Nombre" required />
+  <input type="email" id="edit-email" placeholder="Email" required />
+  <input type="text" id="edit-direccion" placeholder="Dirección" />
+  <input type="text" id="edit-telefono" placeholder="Teléfono" required />
+  <input type="text" id="edit-documento" placeholder="Documento" required />
+  <input type="number" id="edit-id_categoria" placeholder="ID Categoría" />
+  <input type="number" id="edit-id_servicio" placeholder="ID Servicio" />
+  <button type="submit">Guardar Cambios</button>
+</form>
+
+
+
+<script type="module" src="/frontend/scripts/admin/adminProfesionales.js"></script>
+</body>
+</html>
