@@ -1,0 +1,110 @@
+/* Reset base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff0f6;
+  font-family: 'Segoe UI', sans-serif;
+  
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  color: #b02d79;
+  font-size: 2.2em;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(202, 59, 143, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #f3cce0;
+  color: #333;
+}
+
+thead {
+  background-color: #f07cbf;
+  color: white;
+}
+
+tr:hover {
+  background-color: #fff5fa;
+}
+
+/* Formulario */
+form {
+  background-color: #fff;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(202, 59, 143, 0.08);
+}
+
+form h2 {
+  color: #b02d79;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  border: 1px solid #f3cce0;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+form input:focus {
+  border-color: #f07cbf;
+  outline: none;
+}
+
+form button {
+  background-color: #f48ca7;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 100%;
+}
+
+form button:hover {
+  background-color: #e37395;
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    font-size: 0.9em;
+  }
+
+  form {
+    padding: 20px;
+  }
+}

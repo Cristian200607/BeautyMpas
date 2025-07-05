@@ -3,27 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/utils/header.css">
+    <link rel="stylesheet" href="/frontend/assets/styles/cssAdmin/categoriasAdmin.css">
     <title>Listado categorias</title>
 </head>
 <body>
-    <h1>Listado Categorias</h1>
-    <table border="1">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Categoría</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody id="categorias-body"></tbody>
-</table>
 
-<h3>Crear nueva categoría</h3>
-<form id="form-categoria">
-  <input type="text" id="nueva-categoria" placeholder="Nombre de la categoría" required />
-  <button type="submit">➕ Crear</button>
-</form>
+    <div id="header-container"></div>
+    <div class="container">
+            <h1>Listado Categorias</h1>
+            <table border="1">
+        <thead>
+            <tr>
+            <th>ID</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="categorias-body"></tbody>
+        </table>
+
+        <h3>Crear nueva categoría</h3>
+        <form id="form-categoria">
+        <input type="text" id="nueva-categoria" placeholder="Nombre de la categoría" required />
+        <button type="submit">➕ Crear</button>
+        </form>
+</div>
 
 <script type="module" src="/frontend/scripts/admin/adminCategorias.js"></script>
+<script src="/frontend/utils/header.js"></script>
 </body>
 </html>

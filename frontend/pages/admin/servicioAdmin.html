@@ -3,35 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/utils/header.css">
+    <link rel="stylesheet" href="/frontend/assets/styles/cssAdmin/serviciosAdmin.css">
     <title>Document</title>
 </head>
 
 <body>
-  <h1>Listado de Servicios</h1>
+    <div id="header-container"></div>
+    <div class="container">
 
-  <!-- Tabla de Servicios -->
-  <table border="1">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Servicio</th>
-        <th>Precio</th>
-        <th>Categoría</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="servicios-body"></tbody>
-  </table>
+        <h1>Listado de Servicios</h1>
 
-  <!-- Formulario para crear/editar -->
-  <h2>Agregar nuevo servicio</h2>
-<form id="form-crear-servicio">
-  <input type="text" id="nuevo-servicio" placeholder="Nombre del servicio" required>
-  <input type="number" id="nuevo-precio" placeholder="Precio" required>
-  <select id="nueva-categoria" required></select>
-  <button type="submit">Guardar</button>
-</form>
+        <!-- Tabla de Servicios -->
+        <table border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Servicio</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody id="servicios-body"></tbody>
+        </table>
+
+        <!-- Formulario para crear/editar -->
+        <h2>Agregar nuevo servicio</h2>
+        <form id="form-crear-servicio">
+            <input type="text" id="nuevo-servicio" placeholder="Nombre del servicio" required>
+            <input type="number" id="nuevo-precio" placeholder="Precio" required>
+            <select id="nueva-categoria" required></select>
+            <button type="submit">Guardar</button>
+        </form>
+</div>
 
   <script type="module" src="/frontend/scripts/admin/adminServicios.js"></script>
+  <script src="/frontend/utils/header.js"></script>
 </body>
 </html>

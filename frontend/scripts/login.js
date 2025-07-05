@@ -23,6 +23,8 @@ document.getElementById('FormLogin').addEventListener('submit', async (e) => {
         // 🚪 Redirección por rol
         switch(data.rol) {
             case 1:
+                window.location.href = '../pages/admin/menuAdmin.html';
+                break;
             case 3:
                 window.location.href = '../pages/home.html';
                 break;

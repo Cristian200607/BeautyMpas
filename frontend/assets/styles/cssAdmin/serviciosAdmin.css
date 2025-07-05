@@ -1,0 +1,116 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff0f6;
+  font-family: 'Segoe UI', sans-serif;
+  
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 40px 20px;
+  box-shadow: 0 4px 15px rgba(202, 59, 143, 0.1);
+}
+
+/* Títulos */
+h1, h2 {
+  text-align: center;
+  color: #b02d79;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 40px;
+  font-size: 1.6em;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(202, 59, 143, 0.08);
+}
+
+thead {
+  background-color: #f07cbf;
+  color: white;
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #f3cce0;
+  color: #333;
+}
+
+tr:hover {
+  background-color: #fff5fa;
+}
+
+/* Formulario */
+form#form-crear-servicio {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+form#form-crear-servicio input,
+form#form-crear-servicio select {
+  padding: 10px 15px;
+  border: 1px solid #f3cce0;
+  border-radius: 10px;
+  font-size: 1em;
+  min-width: 200px;
+}
+
+form#form-crear-servicio button {
+  background-color: #f48ca7;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+form#form-crear-servicio button:hover {
+  background-color: #e37395;
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    font-size: 0.9em;
+  }
+
+  form#form-crear-servicio {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  form#form-crear-servicio button {
+    width: 100%;
+  }
+}
