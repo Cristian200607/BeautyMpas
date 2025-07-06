@@ -1,0 +1,75 @@
+/* menuAdmin.css */
+
+/* Reseteo base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 60px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff0f6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #b02d79;
+  margin-bottom: 40px;
+}
+
+/* Estilo del menú con tarjetas */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.card {
+  background-color: white;
+  border: 2px solid #f7c7e1;
+  padding: 25px 35px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #b02d79;
+  font-size: 1.3em;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(202, 59, 143, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card:hover {
+  background-color: #f07cbf;
+  color: white;
+  border-color: #f07cbf;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(202, 59, 143, 0.12);
+}
+
+/* Íconos grandes y legibles */
+.card::before {
+  font-size: 1.5em;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card {
+    width: 80%;
+    font-size: 1.2em;
+    padding: 20px;
+  }
+}

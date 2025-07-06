@@ -1,0 +1,117 @@
+/* Reset base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff0f6;
+  font-family: 'Segoe UI', sans-serif;
+  
+}
+
+/* Contenedor */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  padding: 40px 20px;
+  box-shadow: 0 4px 15px rgba(202, 59, 143, 0.1);
+}
+
+/* Títulos */
+h1 {
+  text-align: center;
+  color: #b02d79;
+  font-size: 2.2em;
+  margin-bottom: 30px;
+}
+
+h3 {
+  margin-top: 40px;
+  margin-bottom: 15px;
+  color: #b02d79;
+  font-size: 1.4em;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(202, 59, 143, 0.08);
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #f3cce0;
+  color: #333;
+}
+
+thead {
+  background-color: #f07cbf;
+  color: white;
+}
+
+tr:hover {
+  background-color: #fff5fa;
+}
+
+/* Formulario */
+form#form-categoria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+form#form-categoria input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #f3cce0;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+form#form-categoria button {
+  background-color: #f48ca7;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+form#form-categoria button:hover {
+  background-color: #e37395;
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    font-size: 0.9em;
+  }
+
+  form#form-categoria {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  form#form-categoria button {
+    width: 100%;
+  }
+}

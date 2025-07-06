@@ -1,0 +1,146 @@
+/* Reset base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff0f6;
+  font-family: 'Segoe UI', sans-serif;
+  
+.container{
+    padding: 40px 20px;
+}
+}
+/* Título */
+h1 {
+  text-align: center;
+  color: #b02d79;
+  font-size: 2.2em;
+  margin-bottom: 30px;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(202, 59, 143, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #f3cce0;
+  color: #333;
+}
+
+thead {
+  background-color: #f07cbf;
+  color: white;
+}
+
+tr:hover {
+  background-color: #fff5fa;
+}
+
+/* Modal */
+#edit-modal {
+  display: none;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 30px 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(202, 59, 143, 0.2);
+  z-index: 1000;
+  width: 90%;
+  max-width: 500px;
+}
+
+#edit-modal h2 {
+  text-align: center;
+  color: #b02d79;
+  margin-bottom: 20px;
+}
+
+#edit-form label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: #444;
+}
+
+#edit-form input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #f3cce0;
+  border-radius: 10px;
+  margin-top: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+#edit-form input:focus {
+  border-color: #f07cbf;
+  outline: none;
+}
+
+#edit-form button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.05em;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 48%;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#edit-form button[type="submit"] {
+  background-color: #f48ca7;
+  color: white;
+}
+
+#edit-form button[type="submit"]:hover {
+  background-color: #e37395;
+  transform: scale(1.03);
+}
+
+#edit-form button[type="button"] {
+  background-color: #ddd;
+  color: #333;
+  float: right;
+}
+
+#edit-form button[type="button"]:hover {
+  background-color: #ccc;
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    font-size: 0.9em;
+  }
+
+  #edit-modal {
+    padding: 20px;
+  }
+
+  #edit-form button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #edit-form button[type="button"] {
+    float: none;
+  }
+}

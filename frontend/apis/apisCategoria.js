@@ -31,3 +31,31 @@ export async function getProfesionalesPorCategoria(id_categoria) {
 
   return res.json(); // Devuelve { profesionales: [...], usuarios: [...] }
 }
+
+export async function crearCategoria(nombre) {
+  const res = await fetch(`${API_URL}/categoria`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ categoria: nombre }),
+  });
+  if (!res.ok) throw new Error('Error al crear categoría');
+  return await res.json();
+}
+
+export async function actualizarCategoria(id, nuevoNombre) {
+  const res = await fetch(`${API_URL}/categoria/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ categoria: nuevoNombre }),
+  });
+  if (!res.ok) throw new Error('Error al actualizar categoría');
+  return await res.json();
+}
+
+export async function eliminarCategoriaPorId(id) {
+  const res = await fetch(`${API_URL}/categoria/${id}`, {
+    method: 'DELETE',
+  });
+  if (!res.ok) throw new Error('Error al eliminar categoría');
+  return await res.json();
+}

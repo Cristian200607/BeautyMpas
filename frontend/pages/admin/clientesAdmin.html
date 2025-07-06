@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/frontend/utils/header.css">
+  <link rel="stylesheet" href="/frontend/assets/styles/cssAdmin/clientesAdmin.css">
+  <title>Listado de Clientes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div id="header-container"></div>
+    <div class="container">
+    <h1>Listado de Clientes</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Documento</th>
+            <th>Tipo Documento</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody id="clientes-body">
+        <!-- Aquí se insertan los clientes -->
+        </tbody>
+    </table>
+
+    <!-- Modal edición -->
+    <div id="edit-modal" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%); background:#fff; padding:20px; border:1px solid #ccc; box-shadow: 0 0 10px #aaa;">
+        <h2>Editar Cliente</h2>
+        <form id="edit-form">
+        <input type="hidden" id="edit-id" />
+        <label>Nombre:<br/><input type="text" id="edit-nombre" required /></label><br/>
+        <label>Email:<br/><input type="email" id="edit-email" required /></label><br/>
+        <label>Teléfono:<br/><input type="text" id="edit-telefono" /></label><br/>
+        <label>Documento:<br/><input type="number" id="edit-documento" required /></label><br/>
+        <label>Tipo Documento:<br/><input type="number" id="edit-id_tipo_documento" /></label><br/><br/>
+        <button type="submit">Guardar</button>
+        <button type="button" onclick="cerrarModal()">Cancelar</button>
+        </form>
+    </div>
+    </div>
+  <script type="module" src="/frontend/scripts/admin/adminClientes.js"></script>
+  <script src="/frontend/utils/header.js"></script>
+</body>
+</html>
