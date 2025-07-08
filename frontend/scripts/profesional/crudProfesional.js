@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Botón editar (alternar edición)
     document.getElementById('btnEditar').addEventListener('click', () => {
       enModoEdicion = !enModoEdicion;
+      const emailAlerta = document.getElementById('emailAlerta');
 
       campos.forEach(id => {
         const input = document.getElementById(id);
@@ -80,8 +81,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       });
 
-      // Mostrar/ocultar botón guardar según modo edición
+      // Mostrar/ocultar botón guardar
       btnGuardar.style.display = enModoEdicion ? 'inline-block' : 'none';
+
+      // Mostrar/ocultar alerta bajo el email
+      emailAlerta.style.display = enModoEdicion ? 'block' : 'none';
     });
 
     // Botón guardar
@@ -118,6 +122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           document.getElementById(id + 'Display').style.display = 'block';
         });
 
+        document.getElementById('emailAlerta').style.display = 'none';
         enModoEdicion = false;
         btnGuardar.style.display = 'none';
 
