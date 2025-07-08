@@ -6,19 +6,34 @@ import {
   postTipoPQRS,
 } from '../../apis/apisPqrs.js';
 
-
 document.addEventListener('DOMContentLoaded', async () => {
   await cargarPQRS();
   await cargarTipos();
+
+  // Configurar el filtro de estado
+  document.getElementById('filtroEstado').addEventListener('change', (e) => {
+    const estadoSeleccionado = e.target.value;
+    cargarPQRS(estadoSeleccionado);
+  });
 });
 
-async function cargarPQRS() {
+// Cargar PQRS (opcionalmente filtradas por estado)
+async function cargarPQRS(filtro = 'todos') {
   try {
     const { pqrs } = await getPQRS();
     const tbody = document.getElementById('pqrs-body');
     tbody.innerHTML = '';
 
-    pqrs.forEach((item) => {
+    const filtradas = filtro === 'todos'
+      ? pqrs
+      : pqrs.filter(p => p.estado === filtro);
+
+    if (filtradas.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="7">No hay PQRS con ese estado.</td></tr>';
+      return;
+    }
+
+    filtradas.forEach((item) => {
       const row = document.createElement('tr');
       row.innerHTML = `
         <td>${item.id}</td>
@@ -43,6 +58,7 @@ async function cargarPQRS() {
   }
 }
 
+// Cargar lista de tipos
 async function cargarTipos() {
   try {
     const { tipos } = await getTiposPQRS();
@@ -60,6 +76,7 @@ async function cargarTipos() {
   }
 }
 
+// Cambiar estado
 window.cambiarEstado = async (id, nuevoEstado) => {
   try {
     await putEstadoPQRS(id, nuevoEstado);
@@ -70,20 +87,21 @@ window.cambiarEstado = async (id, nuevoEstado) => {
   }
 };
 
+// Eliminar PQRS
 window.eliminarPQRS = async (id) => {
   if (!confirm('¿Eliminar esta PQRS?')) return;
 
   try {
     await deletePQRS(id);
     alert('✅ PQRS eliminada');
-    await cargarPQRS(); // Refresca lista
+    await cargarPQRS(document.getElementById('filtroEstado').value); // Refrescar con filtro actual
   } catch (err) {
     console.error('Error al eliminar PQRS:', err);
     alert('❌ Error al eliminar PQRS');
   }
 };
 
-// Manejo de formulario de nuevo tipo
+// Crear nuevo tipo de PQRS
 const form = document.getElementById('form-tipo');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -96,7 +114,7 @@ form.addEventListener('submit', async (e) => {
     await postTipoPQRS(nombre);
     alert('✅ Tipo creado');
     input.value = '';
-    await cargarTipos(); // Refresca lista
+    await cargarTipos(); // Refrescar lista
   } catch (err) {
     console.error('Error al crear tipo:', err);
     alert('❌ Error al crear tipo');
