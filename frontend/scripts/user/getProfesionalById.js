@@ -1,4 +1,6 @@
-import {getProfesionalById} from '../../apis/apisProfesional.js'
+import {getProfesionalById} from '../../apis/apisProfesional.js';
+import { getImagenPerfil, getImagenesPortafolio } from '../../apis/apisImagen.js';
+
 
 document.addEventListener('DOMContentLoaded', async () => {
   
@@ -20,6 +22,33 @@ document.addEventListener('DOMContentLoaded', async () => {
   }catch (err)  {
     console.error("Error en la solicitud:", err);
   };
+
+  // Mostrar imagen de perfil
+try {
+  const imagenPerfil = await getImagenPerfil(idRolProfesional);
+  if (imagenPerfil.urlPerfil) {
+    document.getElementById("imagenPerfil").src = imagenPerfil.urlPerfil;
+  }
+} catch (err) {
+  console.error("Error al obtener imagen de perfil:", err);
+}
+
+// Mostrar imágenes del portafolio
+try {
+  const response = await getImagenesPortafolio(idRolProfesional);
+  const imagenesPortafolio = response.imagenes; // ← Asegúrate de acceder al array correcto
+  const collageDiv = document.getElementById("collagePortafolio");
+
+  imagenesPortafolio.forEach(img => {
+    const imgElement = document.createElement("img");
+    imgElement.src = img.urlPortafolio;
+    imgElement.alt = "Imagen del portafolio";
+    collageDiv.appendChild(imgElement);
+  });
+} catch (err) {
+  console.error("Error al obtener imágenes del portafolio:", err);
+}
+
 
 });
   
