@@ -1,32 +1,51 @@
+import { getTiposPQRS, postPQRS } from '../apis/apisPqrs.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('form');
-  const nombre = document.getElementById('nombre');
-  const email = document.getElementById('email');
-  const mensaje = document.getElementById('mensaje');
+document.addEventListener('DOMContentLoaded', async () => {
+  await cargarTiposPQRS();
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Evita que se envíe el formulario automáticamente
+  const form = document.getElementById('form-soporte');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-    // Validaciones básicas
-    if (nombre.value.trim() === '' || email.value.trim() === '' || mensaje.value.trim() === '') {
-      alert('Por favor completa todos los campos.');
-      return;
+    const tipoId = document.getElementById('tipoPQRS').value;
+    const nombre = document.getElementById('nombre').value.trim();
+    const correo = document.getElementById('email').value.trim();
+    const descripcion = document.getElementById('mensaje').value.trim();
+
+    if (!tipoId || !nombre || !correo || !descripcion) {
+      return alert('⚠️ Por favor, completa todos los campos.');
     }
 
-    if (!validateEmail(email.value)) {
-      alert('Por favor ingresa un correo válido.');
-      return;
-    }
+    const nuevaPQRS = {
+      id_tipo: parseInt(tipoId),
+      nombre_usuario: nombre,
+      correo_usuario: correo,
+      descripcion,
+    };
 
-    // Simula envío exitoso
-    alert('¡Gracias! Tu mensaje ha sido enviado correctamente.');
-    form.reset(); // Limpia el formulario
+    try {
+      await postPQRS(nuevaPQRS);
+      alert('✅ Solicitud enviada con éxito');
+      form.reset();
+    } catch (err) {
+      console.error('Error al enviar PQRS:', err);
+      alert('❌ No se pudo enviar tu solicitud. Intenta más tarde.');
+    }
   });
 });
 
-// Función para validar correo electrónico
-function validateEmail(email) {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
+async function cargarTiposPQRS() {
+  try {
+    const { tipos } = await getTiposPQRS();
+    const select = document.getElementById('tipoPQRS');
+    tipos.forEach(tipo => {
+      const option = document.createElement('option');
+      option.value = tipo.id;
+      option.textContent = tipo.nombre_tipó;
+      select.appendChild(option);
+    });
+  } catch (err) {
+    console.error('Error al cargar tipos:', err);
+    alert('❌ No se pudieron cargar los tipos de solicitud.');
+  }
 }
