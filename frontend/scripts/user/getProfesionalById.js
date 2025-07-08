@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     serviciosContainer.innerHTML = "";
 
     const tituloGeneral = document.createElement("h2");
-    tituloGeneral.textContent = "Servicios ofrecidos";
+    tituloGeneral.textContent = "Categorias y Servicios ofercidos:";
     tituloGeneral.style.marginBottom = "15px";
     serviciosContainer.appendChild(tituloGeneral);
 
