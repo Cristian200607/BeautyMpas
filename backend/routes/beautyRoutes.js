@@ -3,7 +3,7 @@ import {login, registerUsuarios, postCategoriaProfesionales, getProfesionales, g
 import {getCategorias, getProfesionalesPorCategoria, obtenerCategoriaPorId, crearCategoria, actualizarCategoria, eliminarCategoria,} from '../controllers/categoriaControllers.js';
 import {getServiciosByIdProfesional, getAllServicios, createServicio, updateServicio, deleteServicio } from '../controllers/servicioControllers.js';
 import{ getAllClientes, getClientePorId, getClientePorEmail, updateClientePorId, eliminarCliente} from '../controllers/clienteController.js';
-
+import { getImagenesByProfesional, subirImagenPortafolio, deleteImagen, subirImagenPerfil, getImagenPerfil} from '../controllers/imagenController.js';
 
 const router = express.Router();
 
@@ -31,7 +31,13 @@ router.get('/cliente/:id', getClientePorId);
 router.get('/cliente', getClientePorEmail); // ?email=...
 router.put('/cliente/:id', updateClientePorId);
 router.delete('/cliente/:id', eliminarCliente);
-
+// Imagenes del portafolio
+router.get('/profesional/:id/imagenes', getImagenesByProfesional);
+router.post('/profesional/:id/imagenes', subirImagenPortafolio);
+router.delete('/imagenes/:id', deleteImagen);
+// Imagen de perfil
+router.post('/profesional/:id/imagen-perfil', subirImagenPerfil);
+router.get('/profesional/:id/imagen-perfil', getImagenPerfil);
 
 
 export default router;
