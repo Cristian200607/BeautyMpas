@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel Admin - PQRS</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+    th { background-color: #f5f5f5; }
+    h2 { margin-top: 2rem; }
+    input, select, button { padding: 0.4rem; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Administrador PQRS</h1>
+
+  <h2>Lista de PQRS</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Correo</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="pqrs-body"></tbody>
+  </table>
+
+  <h2>Tipos de PQRS existentes</h2>
+  <ul id="tipos-lista"></ul>
+
+  <h2>Crear nuevo tipo de PQRS</h2>
+  <form id="form-tipo">
+    <input type="text" id="nuevoTipoInput" placeholder="Nombre del nuevo tipo" required />
+    <button type="submit">Agregar Tipo</button>
+  </form>
+
+  <script type="module" src="/frontend/scripts/admin/AdminPqrs.js"></script>
+</body>
+</html>
