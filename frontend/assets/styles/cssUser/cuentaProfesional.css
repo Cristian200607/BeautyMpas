@@ -2,106 +2,7 @@
     margin: 0;
     padding: 0;
 }
-header{
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    height: 100px;
-    font-weight: 700;
-    font-size: 20px;
-    font-family: serif;
-    justify-content: space-between;
-    padding: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    padding: 0 30px;
-    z-index: 10;
-}
-.logo{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  
-    height: 180px; 
-    width: auto;
-    justify-content: center;
-    justify-items: center;
-}
-.nav{
-    width: 20%;
-    visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    gap: 1rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    background-color: #fff;
-    padding: 2rem;
-    box-shadow: 0 0 0 100vmax rgb(0, 0,0, .5);
-    z-index: 20;
-}
-.nav.visible {
-    opacity: 1;
-    visibility: visible;
-}
-.nav-list{
-    flex-direction: column;
-    list-style-type: none;
-    display: flex;
-    gap: 1rem;  
-}
-.nav-list a {
-    text-decoration: none;
-    color: #333;
-}
-.enlaces a{
-    margin-left: 60px;
-    text-decoration: none;
-    color: #333;
-    font-weight: 700;
-    font-size: 20px;
-    font-family: serif;
-}
-.abrir-menu,
-.cerrar-menu{
-    display: block;
-    border: 0;
-    font-size: 2rem;
-    background-color: transparent;
-    cursor: pointer;
-    margin-bottom: 30px;
-}
-.abrir-menu{
-    color: #1c1c1c;
-}
-.cerrar-menu{
-    color: #1c1c1c;
-}
-    
-  
-.enlaces a:hover {
-      color: #f39ac6;
-}
-header button {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: #f48ca7;
-    color: white;               /* Texto blanco para mejor contraste */
-    border: none;               /* Sin borde */
-    padding: 10px 20px;         /* Espaciado interno */
-    border-radius: 8px;         /* Bordes redondeados */
-    font-size: 25px;            /* Tamaño del texto */
-    cursor: pointer;            /* Cambia el cursor al pasar */
-    transition: all 0.3s ease;  /* Animación suave para cambios */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-}
-  
-header button:hover {
-    background-color: #e37395;   /* Color más fuerte al pasar el mouse */
-    transform: scale(1.05);      /* Ligeramente más grande al hacer hover */
-}
-/*--------------------------------hasta aca va el head----------------------------------------  */ 
+
 body {
     margin: 0;
     padding: 0;
@@ -221,3 +122,59 @@ body {
     transform: translateY(-10px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   }
+
+  .modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+  text-align: center;
+}
+
+.modal-contenido {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.cerrar {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.anterior, .siguiente {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  font-size: 50px;
+  color: white;
+  padding: 16px;
+  user-select: none;
+  transform: translateY(-50%);
+}
+
+.anterior {
+  left: 20px;
+}
+
+.siguiente {
+  right: 20px;
+}
+
+.anterior:hover, .siguiente:hover, .cerrar:hover {
+  color: #ccc;
+}
