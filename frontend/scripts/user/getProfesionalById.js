@@ -1,37 +1,44 @@
 import { getProfesionalById } from '../../apis/apisProfesional.js';
 import { getImagenPerfil, getImagenesPortafolio } from '../../apis/apisImagen.js';
+import { getCategoria } from '../../apis/apisCategoria.js';
+import { getServiciosByIdProfesional } from '../../apis/apisServicio.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
   const idRolProfesional = params.get('id');
-  console.log('ID recibido desde la URL:', idRolProfesional);
+  console.log('[INFO] ID del profesional desde URL:', idRolProfesional);
 
+  // DATOS DEL PROFESIONAL
   try {
     const data = await getProfesionalById(idRolProfesional);
     const profesional = data.profesional;
+    console.log('[INFO] Profesional cargado:', profesional);
 
     document.getElementById("nombreDisplay").textContent = profesional.nombre;
     document.getElementById("emailDisplay").textContent = profesional.email;
     document.getElementById("direccionDisplay").textContent = profesional.documento;
     document.getElementById("telefonoDisplay").textContent = profesional.telefono;
   } catch (err) {
-    console.error("Error en la solicitud:", err);
+    console.error("[ERROR] No se pudo cargar el profesional:", err);
   }
 
-  // Mostrar imagen de perfil
+  // IMAGEN DE PERFIL
   try {
     const imagenPerfil = await getImagenPerfil(idRolProfesional);
+    console.log('[INFO] Imagen de perfil cargada:', imagenPerfil);
     if (imagenPerfil.urlPerfil) {
       document.getElementById("imagenPerfil").src = imagenPerfil.urlPerfil;
     }
   } catch (err) {
-    console.error("Error al obtener imagen de perfil:", err);
+    console.error("[ERROR] Imagen de perfil:", err);
   }
 
-  // Mostrar imágenes del portafolio
+  // PORTAFOLIO
   try {
     const response = await getImagenesPortafolio(idRolProfesional);
     const imagenesPortafolio = response.imagenes || [];
+    console.log('[INFO] Imágenes del portafolio:', imagenesPortafolio);
+
     const collageDiv = document.getElementById("collagePortafolio");
 
     const modal = document.getElementById("modalImagen");
@@ -57,36 +64,34 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     });
 
-    // Funciones del modal
     function abrirModal(index) {
       modal.style.display = "block";
       modalImg.src = urlsImagenes[index];
       modalImg.style.transform = "scale(1)";
     }
 
-    spanCerrar.onclick = function () {
+    spanCerrar.onclick = () => {
       modal.style.display = "none";
       modalImg.style.transform = "scale(1)";
     };
 
-    window.onclick = function (event) {
+    window.onclick = event => {
       if (event.target == modal) {
         modal.style.display = "none";
         modalImg.style.transform = "scale(1)";
       }
     };
 
-    btnSiguiente.onclick = function () {
+    btnSiguiente.onclick = () => {
       imagenActual = (imagenActual + 1) % urlsImagenes.length;
       abrirModal(imagenActual);
     };
 
-    btnAnterior.onclick = function () {
+    btnAnterior.onclick = () => {
       imagenActual = (imagenActual - 1 + urlsImagenes.length) % urlsImagenes.length;
       abrirModal(imagenActual);
     };
 
-    // Zoom al hacer click
     let zoomIn = false;
     modalImg.addEventListener("click", () => {
       zoomIn = !zoomIn;
@@ -94,6 +99,76 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
   } catch (err) {
-    console.error("Error al obtener imágenes del portafolio:", err);
+    console.error("[ERROR] Imágenes del portafolio:", err);
+  }
+
+  // SERVICIOS Y CATEGORÍAS
+  try {
+    const serviciosData = await getServiciosByIdProfesional(idRolProfesional);
+    console.log('[INFO] Servicios del profesional:', serviciosData);
+
+    const categoriasData = await getCategoria();
+    console.log('[INFO] Categorías disponibles:', categoriasData);
+
+    const serviciosContainer = document.getElementById("serviciosContainer");
+    if (!serviciosContainer) {
+      console.warn('[WARN] No se encontró el contenedor con ID serviciosContainer');
+      return;
+    }
+
+    serviciosContainer.innerHTML = "";
+
+    const tituloGeneral = document.createElement("h2");
+    tituloGeneral.textContent = "Servicios ofrecidos";
+    tituloGeneral.style.marginBottom = "15px";
+    serviciosContainer.appendChild(tituloGeneral);
+
+    const serviciosPorCategoria = {};
+    (serviciosData.servicios || []).forEach(servicio => {
+      if (!serviciosPorCategoria[servicio.id_categoria]) {
+        serviciosPorCategoria[servicio.id_categoria] = [];
+      }
+      serviciosPorCategoria[servicio.id_categoria].push(servicio);
+    });
+
+    categoriasData.categorias.forEach(categoria => {
+      const servicios = serviciosPorCategoria[categoria.id];
+      console.log(`[DEBUG] Procesando categoría ${categoria.categoria}:`, servicios);
+
+      if (servicios && servicios.length > 0) {
+        const categoriaDiv = document.createElement("div");
+        categoriaDiv.classList.add("categoria-bloque");
+        categoriaDiv.style.marginBottom = "20px";
+        categoriaDiv.style.padding = "15px";
+        categoriaDiv.style.border = "1px solid #ccc";
+        categoriaDiv.style.borderRadius = "8px";
+        categoriaDiv.style.backgroundColor = "#f9f9f9";
+
+        const titulo = document.createElement("h3");
+        titulo.textContent = categoria.categoria;
+        titulo.style.marginBottom = "10px";
+        titulo.style.color = "#333";
+        titulo.style.fontSize = "18px";
+        categoriaDiv.appendChild(titulo);
+
+        const lista = document.createElement("ul");
+        lista.style.listStyle = "disc inside";
+        servicios.forEach(servicio => {
+          const item = document.createElement("li");
+          item.textContent = `${servicio.servicio} - $${parseFloat(servicio.precio).toFixed(2)}`;
+          item.style.marginBottom = "5px";
+          item.style.color = "#555";
+          lista.appendChild(item);
+        });
+
+        categoriaDiv.appendChild(lista);
+        serviciosContainer.appendChild(categoriaDiv);
+      }
+    });
+
+    console.log("[DEBUG] HTML final de #serviciosContainer:", serviciosContainer.innerHTML);
+
+  } catch (err) {
+    console.error("[ERROR] Categorías o servicios:", err);
   }
 });

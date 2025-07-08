@@ -178,3 +178,26 @@ body {
 .anterior:hover, .siguiente:hover, .cerrar:hover {
   color: #ccc;
 }
+
+.servicios {
+  margin-top: 30px;
+  background-color: #fff5fb;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.servicios h3 {
+  color: #b3005e;
+  margin-bottom: 10px;
+}
+
+.servicios ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.servicios li {
+  margin-bottom: 8px;
+  color: #444;
+}

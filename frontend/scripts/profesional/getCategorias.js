@@ -54,10 +54,7 @@ btnAgregar.addEventListener('click', () => {
   const nombreServicio = inputNombreServicio.value.trim();
   const precioServicio = inputPrecioServicio.value.trim();
 
-  if (!selectedId || categoriasSeleccionadas.some(c => c.id == selectedId)) {
-    alert("Categoría ya seleccionada o inválida.");
-    return;
-  }
+  
 
   if (!nombreServicio || !precioServicio) {
     alert("Debes escribir el nombre y el precio del servicio.");
