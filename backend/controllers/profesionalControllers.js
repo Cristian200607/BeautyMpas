@@ -38,25 +38,26 @@ export const getProfesionalesById = async (req, res) => {
 };
 
 export const getProfesionalesByEmail = async (req, res) => {
-    try {
-        const email = req.query.email;
+  try {
+    const email = req.query.email;
+    console.log("Email recibido:", email);
 
-        if (!email) {
-            return res.status(400).json({ message: 'Email no proporcionado' });
-        }
-
-        const profesional = await getProfesionalByEmail(email);
-
-        if (!profesional) {
-            return res.status(404).json({ message: 'Profesional no encontrado' });
-        }
-
-        res.status(200).json({ message: 'Profesional encontrado', profesional });
-
-    } catch (error) {
-        console.error('Error al obtener el profesional:', error);
-        res.status(500).json({ message: 'Error interno del servidor' });
+    if (!email) {
+      return res.status(400).json({ message: 'Email no proporcionado' });
     }
+
+    const profesional = await getProfesionalByEmail(email);
+
+    if (!profesional) {
+      console.log("No se encontró profesional con ese email");
+      return res.status(404).json({ message: 'Profesional no encontrado' });
+    }
+
+    res.status(200).json({ message: 'Profesional encontrado', profesional });
+  } catch (error) {
+    console.error('Error al obtener el profesional:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
 };
 
   
@@ -101,21 +102,21 @@ export const postCategoriaProfesionales = async (req, res) => {
 
 
 export const updateProfesionales = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { nombre, email, direccion, telefono } = req.body;
+  try {
+    const { id } = req.params;
+    const { nombre, direccion, telefono } = req.body;
 
-        const result = await updateProfesional(id, { nombre, email, direccion, telefono });
+    const result = await updateProfesional(id, { nombre, direccion, telefono });
 
-        if (result.affectedRows === 0) {
-            return res.status(404).json({ message: 'Profesional no encontrado' });
-        }
-
-        res.status(200).json({ message: 'Profesional actualizado correctamente' });
-    } catch (error) {
-        console.error('Error al actualizar profesional:', error);
-        res.status(500).json({ message: 'Error interno del servidor' });
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Profesional no encontrado' });
     }
+
+    res.status(200).json({ message: 'Profesional actualizado correctamente' });
+  } catch (error) {
+    console.error('Error al actualizar profesional:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
 };
 
 export const deleteProfesionales = async (req, res) => {

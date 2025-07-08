@@ -58,13 +58,19 @@ export const getProfesionalByEmail = async (email) => {
 }
 
 export const updateProfesional = async (id, datos) => {
-    const {nombre, email, direccion, telefono} = datos;
+  const { nombre, direccion, telefono } = datos;
+  try {
     const [rows] = await pool.query(
-        'update profesional set nombre = ?, email = ?, direccion = ?, telefono = ? where id = ?', 
-        [nombre, email, direccion, telefono, id]
-    )
-    return rows
-}
+      'UPDATE profesional SET nombre = ?, direccion = ?, telefono = ? WHERE id = ?', 
+      [nombre, direccion, telefono, id]
+    );
+    return rows;
+  } catch (error) {
+    console.error("Error en modelo updateProfesional:", error);
+    throw error;
+  }
+};
+
 
 export const deleteProfesional = async (id) => {
     const [rows] = await pool.query(

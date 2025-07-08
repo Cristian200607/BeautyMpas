@@ -218,3 +218,36 @@ button:hover {
     width: 100%;
   }
 }
+.informacion-listado {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+.informacion-listado p {
+  font-size: 1rem;
+  margin: 0.3rem 0;
+  color: #444;
+}
+
+.informacion h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: #b5005a;
+}
+
+.informacion span {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #000;
+  display: block;
+}
+
+.informacion-listado {
+  margin-top: 0.5rem;
+}
+
+.informacion-listado p {
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+  color: #000;
+}
