@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         box.innerHTML = `
           <div class="texts">
             <p>${profesional.nombre}</p>
-            <button class="btnVer" data-id="${profesional.id}">RESERVA TU CITA YA</button>
+            <button class="btnVer">RESERVA TU CITA YA</button>
           </div>
         `;
 

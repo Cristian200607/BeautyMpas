@@ -20,16 +20,19 @@ export async function getServicios() {
   return data.servicios; // si data.servicios es un array
 }
 
-export async function crearServicio(data) {
-  const res = await fetch(`${API_BASE}/servicio`, { // ⬅️ corregido
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  });
-  if (!res.ok) throw new Error('Error al crear servicio');
-  return await res.json();
+export async function postServicioProfesional(dataPostServicioProfesional) {
+    
+    const res = await fetch(`${API_BASE}/postCategoriaProfesional`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataPostServicioProfesional),
+    })
+    const data = await res.json();
+    if (!res.ok) {
+        throw new Error(data.message || "Error desconocido");
+    }
+    return data; // Esto contiene el mensaje del backend
 }
-
 
 export async function actualizarServicio(id, data) {
   const res = await fetch(`${API_BASE}/servicio/${id}`, {

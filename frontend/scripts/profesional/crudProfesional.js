@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const usuario = JSON.parse(localStorage.getItem('usuario'));
   const email = usuario?.email;
-  const boton = document.getElementById('btnSeviciosyCategorias');
+  const botonSeviciosyCategorias = document.getElementById('btnSeviciosyCategorias');
+  const botonMisCitas = document.getElementById('btnCitasPendientes');
 
   if (!email){
     document.body.innerHTML = "<p>email no proporcionado</p>"
@@ -24,9 +25,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('direccion').value = profesional.direccion;
   document.getElementById('telefono').value = profesional.telefono;
 
-  boton.addEventListener('click', () => {
+  botonSeviciosyCategorias.addEventListener('click', () => {
     const id = profesional.id;
     window.location.href = `/frontend/pages/profesional/misCategoriasYServicios.html?id=${id}`;
+  });
+
+  botonMisCitas.addEventListener('click', () => {
+    const id = profesional.id;
+    window.location.href = `/frontend/pages/profesional/citasPendientesProf.html?id=${id}`;
   });
 
   document.getElementById('btnActualizar').addEventListener('click', async () => {

@@ -26,16 +26,6 @@ export const crearUsuario = async(id_rol, id_tipo_documento, nombre, email, dire
     }
 };
 
-export const postCategoriaProfesional = async (id_profesional, id_categoria, servicio, precio) => {
-  const [result] = await pool.query(
-    'INSERT INTO servicio (id_profesional, id_categoria, servicio, precio) VALUES (?, ?, ?, ?)',
-    [id_profesional, id_categoria, servicio, precio]
-  );
-  return result.insertId;
-};
-
-
-
 export const getProfesional = async () => {
     const [rows] = await pool.query(
         'SELECT * FROM profesional'
@@ -56,6 +46,24 @@ export const getProfesionalByEmail = async (email) => {
     );
     return rows[0];
 }
+
+// 1. Obtener los id_profesional que pertenecen a la categoría
+export const getIdProfesionalesPorCategoria = async (id_categoria) => {
+  const [rows] = await pool.query(
+    'SELECT id_profesional FROM servicio WHERE id_categoria = ?',
+    [id_categoria]
+  );
+  return rows; // Ej: [ { id_profesional: 19 }, { id_profesional: 21 } ]
+};
+
+export const getProfesionalesPorIds = async (idsProfesional) => {
+  if (!idsProfesional.length) return [];
+  const [rows] = await pool.query(
+    `SELECT * FROM profesional WHERE id IN (${idsProfesional.map(() => '?').join(',')})`,
+    idsProfesional
+  );
+  return rows;
+};
 
 export const updateProfesional = async (id, datos) => {
     const {nombre, email, direccion, telefono} = datos;

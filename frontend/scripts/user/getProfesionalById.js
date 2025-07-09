@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
   const idRolProfesional = params.get('id');
   console.log('ID recibido desde la URL:', idRolProfesional);
+  // ✅ Establecer el ID del profesional como parámetro en el botón de agendar
+  const agendarBtn = document.getElementById("agendarCitaBtn");
+  agendarBtn.href = `/frontend/pages/user/cuestionarioServicios.html?id=${idRolProfesional}`;
+
 
 
   try{
