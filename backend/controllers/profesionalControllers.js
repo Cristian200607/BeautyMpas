@@ -1,18 +1,16 @@
 import bcrypt from 'bcryptjs';
 import{ crearUsuario,
-        postCategoriaProfesional,
         getProfesional, 
         getProfesionalById,
         getProfesionalByEmail,
+        getIdProfesionalesPorCategoria,
+        getProfesionalesPorIds,
         updateProfesional,
         deleteProfesional,
         obtenerRolPorId, 
         buscarUsuariosPorEmail,
       } 
 from '../models/profesionalModel.js';
-
-import {tieneCategoriasAsignadas} from '../controllers/categoriaControllers.js'
-
 
 export const getProfesionales = async (req, res) => {
     const profesionales = await getProfesional()
@@ -60,46 +58,27 @@ export const getProfesionalesByEmail = async (req, res) => {
   }
 };
 
-  
-
-
-export const registerUsuarios = async (req, res) =>{
-    const { id_rol, id_tipo_documento, nombre, email, direccion, telefono, documento, contraseña } = req.body;
-    const userExistente = await buscarUsuariosPorEmail(email);
-    if (userExistente) {
-        return res.status(400).json({ message: 'correo ya registrado'});
-    }
-    const hash = await bcrypt.hash(contraseña, 10); //Salt: texto aleatorio 
-    await crearUsuario(id_rol, id_tipo_documento, nombre, email, direccion, telefono, documento, hash);
-    res.status(201).json({ message: 'usuario creado correctamete'});
-};
-
-
-export const postCategoriaProfesionales = async (req, res) => {
-  const servicios = req.body;
-
-  if (!Array.isArray(servicios) || servicios.length === 0) {
-    return res.status(400).json({ message: 'Datos inválidos. Se esperaba un array de servicios.' });
-  }
+export const getProfesionalesPorCategoria = async (req, res) => {
+  const { id_categoria } = req.params;
 
   try {
-    for (const servicio of servicios) {
-      const { id_profesional, id_categoria, servicio: nombre, precio } = servicio;
+    // Paso 1: obtener los ids de usuario desde la categoría
+    const idsRaw = await getIdProfesionalesPorCategoria(id_categoria); // te da usuarios.id
+    const idsProfesional = idsRaw.map(row => row.id_profesional); // Ojo: aquí es el id del usuario, no profesional
 
-      if (!id_profesional || !id_categoria || !nombre || !precio) {
-        return res.status(400).json({ message: 'Faltan campos obligatorios.' });
-      }
+    console.log('🎯 IDs de usuario desde profesional_categoria:', idsProfesional);
 
-      await postCategoriaProfesional(id_profesional, id_categoria, nombre, precio);
-    }
+    // Paso 3: obtener los datos desde la tabla profesional
+    const profesionales = await getProfesionalesPorIds(idsProfesional);
+    console.log('📦 Profesionales encontrados:', profesionales);
 
-    res.status(201).json({ message: 'Servicios registrados correctamente.' });
+    res.status(200).json({ profesionales });
+
   } catch (error) {
-    console.error('Error al registrar servicios:', error);
-    res.status(500).json({ message: 'Error al registrar servicios.' });
+    console.error('❌ Error al obtener profesionales por categoría:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
   }
 };
-
 
 export const updateProfesionales = async (req, res) => {
   try {
@@ -134,8 +113,16 @@ export const deleteProfesionales = async (req, res) => {
     }
 };
 
-
-
+export const registerUsuarios = async (req, res) =>{
+    const { id_rol, id_tipo_documento, nombre, email, direccion, telefono, documento, contraseña } = req.body;
+    const userExistente = await buscarUsuariosPorEmail(email);
+    if (userExistente) {
+        return res.status(400).json({ message: 'correo ya registrado'});
+    }
+    const hash = await bcrypt.hash(contraseña, 10); //Salt: texto aleatorio 
+    await crearUsuario(id_rol, id_tipo_documento, nombre, email, direccion, telefono, documento, hash);
+    res.status(201).json({ message: 'usuario creado correctamete'});
+};
 
 //funcion login
 export const login = async (req, res) => {
@@ -159,6 +146,7 @@ export const login = async (req, res) => {
         rol, 
         id: user.id,
         id_profesional: user.id_profesional,
+        id_cliente: user.id_cliente,
         nombre: user.nombre,
     });
 };

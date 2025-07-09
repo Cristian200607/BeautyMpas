@@ -17,6 +17,8 @@
 
       <input type="text" id="nombreServicio" placeholder="Nombre del servicio (ej: Corte dama)">
       <input type="number" id="precioServicio" placeholder="Precio del servicio ($)">
+      <input type="text" id="descripcionServicio" placeholder="Descripción del servicio">
+      <input type="text" id="tiempoServicio" placeholder="Tiempo del servicio (ej: 45min)">
       
       <button id="btnAgregar" class="btn-agregar">Agregar</button>
     </div>
@@ -28,6 +30,8 @@
           <th>Categoría</th>
           <th>Servicio</th>
           <th>Precio</th>
+          <th>Descripción</th>
+          <th>Tiempo</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -37,23 +41,7 @@
     <button class="btn-finalizar" id="btnFinalizar">Finalizar</button>
   </div>
 
-  <!-- 🆕 Script para actualizar servicio -->
-  <script>
-    // Este script permite capturar cambios en inputs dentro de la tabla
-    document.addEventListener('input', function (e) {
-      if (e.target.classList.contains('input-servicio')) {
-        const id = e.target.dataset.id;
-        const campo = e.target.dataset.campo;
-        const valor = e.target.value;
-
-        const index = categoriasSeleccionadas.findIndex(c => c.id == id);
-        if (index !== -1) {
-          categoriasSeleccionadas[index][campo] = campo === 'precio' ? parseFloat(valor) : valor;
-        }
-      }
-    });
-  </script>
-
-  <script type="module" src="/frontend/scripts/profesional/getCategorias.js"></script>
+  <script type="module" src="/frontend/scripts/profesional/crudCategorias.js"></script>
 </body>
 </html>
+

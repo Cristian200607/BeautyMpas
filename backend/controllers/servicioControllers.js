@@ -1,6 +1,6 @@
 import {getServiciosPorProfesional,
   getServicios,
-  crearServicio,
+  postServicioProfesional,
   actualizarServicio,
   eliminarServicio
 } from '../models/servicioModel.js'
@@ -26,16 +26,45 @@ export const getAllServicios = async (req, res) => {
   }
 };
 
-export const createServicio = async (req, res) => {
-  const { servicio, precio, id_categorias } = req.body;
+export const postServicioProfesionales = async (req, res) => {
+  const servicios = req.body;
+
+  if (!Array.isArray(servicios) || servicios.length === 0) {
+    return res.status(400).json({ message: 'Datos inválidos. Se esperaba un array de servicios.' });
+  }
+
   try {
-    const id = await crearServicio(servicio, precio, id_categorias);
-    res.status(201).json({ message: 'Servicio creado', id });
+    for (const servicio of servicios) {
+      const {
+        id_profesional,
+        id_categoria,
+        servicio: nombre,
+        precio,
+        descripcion_servicio,
+        tiempo_servicio
+      } = servicio;
+
+      if (!id_profesional || !id_categoria || !nombre || !precio || !descripcion_servicio || !tiempo_servicio) {
+        return res.status(400).json({ message: 'Faltan campos obligatorios.' });
+      }
+
+      await postServicioProfesional(
+        id_profesional,
+        id_categoria,
+        nombre,
+        precio,
+        descripcion_servicio,
+        tiempo_servicio
+      );
+    }
+
+    res.status(201).json({ message: 'Servicios registrados correctamente.' });
   } catch (error) {
-    console.error('Error al crear servicio:', error);
-    res.status(500).json({ message: 'Error al crear servicio.' });
+    console.error('Error al registrar servicios:', error);
+    res.status(500).json({ message: 'Error al registrar servicios.' });
   }
 };
+
 
 export const updateServicio = async (req, res) => {
   const { id } = req.params;
