@@ -4,7 +4,7 @@ import {getCategorias, getProfesionalesPorCategoria, obtenerCategoriaPorId, crea
 import {getServiciosByIdProfesional, getAllServicios, createServicio, updateServicio, deleteServicio } from '../controllers/servicioControllers.js';
 import{ getAllClientes, getClientePorId, getClientePorEmail, updateClientePorId, eliminarCliente} from '../controllers/clienteController.js';
 import { getImagenesByProfesional, subirImagenPortafolio, deleteImagen, subirImagenPerfil, getImagenPerfil} from '../controllers/imagenController.js';
-import { obtenerPQRS, obtenerPQRSporId, crearPQRS, actualizarEstadoPQRS, eliminarPQRSporId, obtenerTiposPQRS, crearTipoPQRS } from '../controllers/pqrsController.js';
+import { obtenerPQRS, obtenerPQRSporId, crearPQRS, actualizarEstadoPQRS, eliminarPQRSporId, obtenerTiposPQRS, crearTipoPQRS } from '../controllers/pqrsController.js'; develop
 
 const router = express.Router();
 
@@ -46,7 +46,7 @@ router.post('/pqrs', crearPQRS);
 router.put('/pqrs/:id', actualizarEstadoPQRS);
 router.delete('/pqrs/:id', eliminarPQRSporId);
 router.get('/tipoPQRS', obtenerTiposPQRS);
-router.post('/tipoPQRS', crearTipoPQRS);
+router.post('/tipoPQRS', crearTipoPQRS); develop
 
 
 export default router;
