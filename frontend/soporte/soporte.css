@@ -72,7 +72,7 @@ ul li {
 form input,
 form textarea {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.3rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
@@ -111,4 +111,24 @@ footer {
   padding: 1rem;
   font-size: 0.9rem;
   color: #666;
+}
+
+/* Estilo para el selector de tipo PQRS */
+form select {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  background-color: white;
+  color: var(--text-color);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'10'%20height%3D'7'%20viewBox%3D'0%200%2010%207'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M0%200l5%207%205-7z'%20fill%3D'%23fa92cb'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
 }
