@@ -7,9 +7,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
   const idRolProfesional = params.get('id');
   console.log('ID recibido desde la URL:', idRolProfesional);
-  // ✅ Establecer el ID del profesional como parámetro en el botón de agendar
   const agendarBtn = document.getElementById("agendarCitaBtn");
-  agendarBtn.href = `/frontend/pages/user/cuestionarioServicios.html?id=${idRolProfesional}`;
+
 
   console.log('[INFO] ID del profesional desde URL:', idRolProfesional);
 
@@ -23,6 +22,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById("emailDisplay").textContent = profesional.email;
     document.getElementById("direccionDisplay").textContent = profesional.documento;
     document.getElementById("telefonoDisplay").textContent = profesional.telefono;
+
+
+    agendarBtn.addEventListener('click', () => {
+      const id = profesional.id;
+      window.location.href = `/frontend/pages/user/cuestionarioServicios.html?id=${id}`;
+    });
   } catch (err) {
     console.error("[ERROR] No se pudo cargar el profesional:", err);
   }
