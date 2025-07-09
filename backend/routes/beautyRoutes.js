@@ -4,6 +4,8 @@ import {getCategorias, obtenerCategoriaPorId, crearCategoria, actualizarCategori
 import {getServiciosByIdProfesional, getAllServicios, postServicioProfesionales, updateServicio, deleteServicio } from '../controllers/servicioControllers.js';
 import{ getAllClientes, getClientePorId, getClientePorEmail, updateClientePorId, eliminarCliente} from '../controllers/clienteController.js';
 import { crearCita, obtenerCitasPorProfesional, actualizarCitaEstado } from '../controllers/citaControllers.js';
+import { getImagenesByProfesional, subirImagenPortafolio, deleteImagen, subirImagenPerfil, getImagenPerfil} from '../controllers/imagenController.js';
+import { obtenerPQRS, obtenerPQRSporId, crearPQRS, actualizarEstadoPQRS, eliminarPQRSporId, obtenerTiposPQRS, crearTipoPQRS } from '../controllers/pqrsController.js'; 
 
 const router = express.Router();
 
@@ -50,6 +52,25 @@ router.post('/postCita', crearCita); // POST /api/citas
 router.get('/getCitaByprofesional/:id_profesional', obtenerCitasPorProfesional);
 router.put('/cita/:id/estado', actualizarCitaEstado);
 
+// Imagenes del portafolio
+router.get('/profesional/:id/imagenes', getImagenesByProfesional);
+router.post('/profesional/:id/imagenes', subirImagenPortafolio);
+router.delete('/imagenes/:id', deleteImagen);
+//
+
+// Imagen de perfil
+router.post('/profesional/:id/imagen-perfil', subirImagenPerfil);
+router.get('/profesional/:id/imagen-perfil', getImagenPerfil);
+//
+
+// pqrs
+router.get('/pqrs', obtenerPQRS);
+router.get('/pqrs/:id', obtenerPQRSporId);
+router.post('/pqrs', crearPQRS);
+router.put('/pqrs/:id', actualizarEstadoPQRS);
+router.delete('/pqrs/:id', eliminarPQRSporId);
+router.get('/tipoPQRS', obtenerTiposPQRS);
+router.post('/tipoPQRS', crearTipoPQRS);
 //
 
 export default router;

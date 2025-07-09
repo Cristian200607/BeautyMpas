@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soporte | Beauty Maps</title>
-  <link rel="stylesheet" href="/frontend/utilidades/header.css">
-  <link rel="stylesheet" href="soporte.css"> 
+  <link rel="stylesheet" href="/frontend/utils/header.css">
+  <link rel="stylesheet" href="/frontend/soporte/soporte.css"> 
   
 </head>
 <body>
@@ -28,22 +28,29 @@
     </section>
 
     <!-- Sección de contacto -->
-    <section>
-      <h2>Contáctanos</h2>
-      <p>¿No encontraste lo que buscabas? Escríbenos directamente:</p>
-      <form action="/enviar-soporte" method="post">
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre" required><br><br>
+  <section>
+    <h2>Contáctanos</h2>
+    <p>¿No encontraste lo que buscabas? Escríbenos directamente:</p>
+    
+    <form id="form-soporte">
+      <label for="tipoPQRS">Tipo de solicitud:</label><br>
+      <select id="tipoPQRS" required>
+        <option value="">Seleccione un tipo...</option>
+        <!-- Tipos serán cargados desde JS -->
+      </select><br><br>
 
-        <label for="email">Correo electrónico:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+      <label for="nombre">Nombre:</label><br>
+      <input type="text" id="nombre" required><br><br>
 
-        <label for="mensaje">Mensaje:</label><br>
-        <textarea id="mensaje" name="mensaje" rows="5" required></textarea><br><br>
+      <label for="email">Correo electrónico:</label><br>
+      <input type="email" id="email" required><br><br>
 
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
+      <label for="mensaje">Mensaje:</label><br>
+      <textarea id="mensaje" rows="5" required></textarea><br><br>
+
+      <button type="submit">Enviar</button>
+    </form>
+</section>
 
     <!-- Información adicional -->
     <section>
@@ -67,7 +74,8 @@
   <footer>
     <p>&copy; 2025 Beauty Maps. Todos los derechos reservados.</p>
   </footer>
-  <script src="soporte.js"></script>
+  <script type="module" src="/frontend/soporte/soporte.js"></script>
+  <script src="/frontend/utils/header.js"></script>
 </body>
-<script src="/frontend/utilidades/header.js"></script>
+
 </html>

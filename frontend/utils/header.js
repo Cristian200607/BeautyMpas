@@ -28,7 +28,7 @@ function loadHeader() {
           userLinks.innerHTML = `
             <span>Hola, ${usuarios.nombre}</span>
             <a href="#">Contacto</a>
-            <a href="#">Soporte</a>
+            <a href="/frontend/soporte/soporte.html">Soporte</a>
             <a href="#" id="logout-link">Cerrar sesión</a>
           `;
 

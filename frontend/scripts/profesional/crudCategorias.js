@@ -58,8 +58,11 @@ btnAgregar.addEventListener('click', () => {
   const descripcionServicio = inputDescripcionServicio.value.trim();
   const tiempoServicio = inputTiempoServicio.value.trim();
 
-  if (!nombreServicio || !precioServicio || !descripcionServicio || !tiempoServicio) {
-    alert("Debes completar todos los campos.");
+
+  
+
+  if (!nombreServicio || !precioServicio) {
+    alert("Debes escribir el nombre y el precio del servicio.");
     return;
   }
 

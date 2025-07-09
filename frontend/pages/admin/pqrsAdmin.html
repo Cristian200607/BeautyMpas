@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/frontend/utils/header.css">
+  <link rel="stylesheet" href="/frontend/assets/styles/cssAdmin/pqrsAdmin.css">
+  <title>Panel Admin - PQRS</title>
+</head>
+<body>
+    <div id="header-container"></div>
+
+  <h1>Administrador PQRS</h1>
+
+  <h2>Lista de PQRS</h2>
+
+  <label for="filtroEstado">Filtrar por estado:</label>
+        <select id="filtroEstado">
+            <option value="todos">Todos</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="en proceso">En proceso</option>
+            <option value="resuelto">Resuelto</option>
+        </select>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Correo</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="pqrs-body"></tbody>
+  </table>
+
+  <h2>Tipos de PQRS existentes</h2>
+  <ul id="tipos-lista"></ul>
+
+  <h2>Crear nuevo tipo de PQRS</h2>
+  <form id="form-tipo">
+    <input type="text" id="nuevoTipoInput" placeholder="Nombre del nuevo tipo" required />
+    <button type="submit">Agregar Tipo</button>
+  </form>
+
+  <script type="module" src="/frontend/scripts/admin/AdminPqrs.js"></script>
+  <script src="/frontend/utils/header.js"></script>
+</body>
+</html>
