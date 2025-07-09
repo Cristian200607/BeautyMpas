@@ -126,12 +126,12 @@ body {
   }
   
 button {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: #f48ca7;
+    font-family:'Times New Roman', Times, serif;
+    background-color: #f992c5;;
     color: white;               /* Texto blanco para mejor contraste */
     border: none;               /* Sin borde */
     padding: 10px 20px;         /* Espaciado interno */
-    border-radius: 8px;         /* Bordes redondeados */
+    border-radius: 20px;         /* Bordes redondeados */
     font-size: 25px;            /* Tamaño del texto */
     cursor: pointer;            /* Cambia el cursor al pasar */
     transition: all 0.3s ease;  /* Animación suave para cambios */
@@ -139,13 +139,13 @@ button {
   }
   
   button:hover {
-    background-color: #e37395;   /* Color más fuerte al pasar el mouse */
+    background-color: #f992c5;;   /* Color más fuerte al pasar el mouse */
     transform: scale(1.05);      /* Ligeramente más grande al hacer hover */
   }
   /* Sección: Cómo Funciona */
 .como-funciona {
-    padding: 60px 5px;
-    background-color: #fdedf2;
+    padding: 10px 5px;
+    background-color: #ffffff;
     text-align: center;
     border-radius: 20px;
   }
@@ -237,7 +237,33 @@ button {
   .btn-secondary:hover {
     background-color: #e073ae;
   }
-  
+  .info-servicios {
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px 10px;
+}
+.info-servicios button {
+  background-color: #f992c5;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+  margin-top: 15px;
+}
+
+.info-servicios button:hover {
+  background-color: #f58cc9;
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(235, 142, 196, 0.986);
+}
+
+
   /* Responsive */
   @media (max-width: 768px) {
     .como-funciona .steps,
