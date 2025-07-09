@@ -27,13 +27,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Cargar valores en inputs
     botonSeviciosyCategorias.addEventListener('click', () => {
-    const id = profesional.id;
-    window.location.href = `/frontend/pages/profesional/misCategoriasYServicios.html?id=${id}`;
-  });
+      const id = profesional.id;
+      window.location.href = `/frontend/pages/profesional/misCategoriasYServicios.html?id=${id}`;
+    });  
+
     botonMisCitas.addEventListener('click', () => {
-    const id = profesional.id;
-    window.location.href = `/frontend/pages/profesional/citasPendientesProf.html?id=${id}`;
-  });
+      const id = profesional.id;
+      window.location.href = `/frontend/pages/profesional/citasPendientesProf.html?id=${id}`;
+    });
+    
     campos.forEach(id => {
       const input = document.getElementById(id);
       input.value = profesional[id] || '';
