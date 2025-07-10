@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------------- FACTURA NUEVA ---------------- */
+
+.factura-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border: 3px solid #d87dbf;
+  border-radius: 15px;
+  font-family: 'Georgia', serif;
+  color: #4a004f;
+  background-color: #fef0f5;
+  box-shadow: 0 0 20px rgba(214, 140, 190, 0.2);
+  text-align: center;
+}
+
+.factura-check {
+  font-size: 50px;
+  color: #d87dbf;
+  margin-bottom: 15px;
+}
+
+.factura-gracias {
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+.factura-gracias span {
+  font-weight: bold;
+  color: #4a004f;
+}
+
+/* ---------------- DETALLES FACTURA ---------------- */
+
+#factura-info {
+  text-align: left;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(221, 144, 199, 0.15);
+  margin-bottom: 30px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+#factura-info p {
+  margin-bottom: 10px;
+}
+
+#factura-info ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+#factura-info ul li {
+  margin-bottom: 5px;
+}
+
+/* ---------------- TOTAL ---------------- */
+
+.factura-total {
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+.factura-total-monto {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4a004f;
+  margin-bottom: 20px;
+}
+
+/* ---------------- PIE DE PÁGINA ---------------- */
+
+.factura-footer {
+  font-size: 13px;
+  color: #5b0055;
+  background: #fff;
+  border-top: 1px dashed #dca3c8;
+  padding-top: 15px;
+  margin-top: 20px;
+  line-height: 1.5;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(221, 144, 199, 0.15);
+}
+
+/* ---------------- BOTÓN ---------------- */
+
+.btn-volver {
+  display: block;
+  margin: 25px auto;
+  text-align: center;
+  padding: 10px 20px;
+  background-color: #f1abb6;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(216, 125, 191, 0.3);
+}
+
+.btn-volver:hover {
+  background-color: #e1869c;
+  transform: scale(1.05);
+}

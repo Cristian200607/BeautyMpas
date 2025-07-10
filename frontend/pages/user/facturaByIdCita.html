@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Factura</title>
+  <link rel="stylesheet" href="/frontend/assets/styles/cssUser/facturaByCitaId.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="/frontend/utils/header.css" />
 </head>
 <body>
-    <select id="select-metodo-pago" disabled>
-  <option value="">Método de pago</option>
-</select>
-<div id="factura-info"></div>
-<script type="module" src="/frontend/scripts/user/getFacturaByIdCita.js"></script>
+  <div id="header-container"></div>
+
+  <div class="factura-container">
+    <div class="factura-check">✔️</div>
+
+    <h2 class="factura-gracias">
+      ¡GRACIAS por agendar en BEAUTY MAPS!
+    </h2>
+
+    <div id="factura-info"></div>
+
+    <h3 class="factura-total">El total de tus servicios es:</h3>
+    <p class="factura-total-monto" id="total-factura">$0.00</p>
+
+    <p class="factura-footer">
+      ¡Agradecemos tu confianza en Beauty Studio! 🌸<br />
+      Recuerda llegar puntual, así podemos dedicarte el tiempo que te mereces. ⏰<br />
+      Si deseas cancelar o reprogramar tu cita, hazlo con tiempo de anticipación. ¡Te esperamos! 💕
+    </p>
+
+    <a href="/frontend/pages/home.html" class="btn-volver">Volver al inicio</a>
+  </div>
+
+  <script type="module" src="/frontend/scripts/user/getFacturaByIdCita.js"></script>
+  <script src="/frontend/utils/header.js"></script>
 </body>
 </html>
