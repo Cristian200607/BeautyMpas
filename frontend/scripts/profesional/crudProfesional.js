@@ -149,10 +149,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       window.location.href = `/frontend/pages/profesional/misCategoriasYServicios.html?id=${profesional.id}`;
     });
 
-    document.getElementById('btnMisCitas').addEventListener('click', () => {
-      window.location.href = `/frontend/pages/profesional/misCitas.html?id=${profesional.id}`;
-    });
-
   } catch (error) {
     console.error("Error general:", error);
     document.body.innerHTML = `<p>Error al cargar datos del profesional.</p>`;

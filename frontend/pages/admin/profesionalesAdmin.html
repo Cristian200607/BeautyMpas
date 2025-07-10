@@ -20,8 +20,7 @@
     <th>Email</th>
     <th>Dirección</th>
     <th>Teléfono</th>
-    <th>Categoría</th>
-    <th>Servicio</th>
+    <th>Documento</th>
     <th>Acciones</th>
   </tr>
 </thead>
@@ -37,7 +36,13 @@
   <input type="email" id="edit-email" placeholder="Email" required />
   <input type="text" id="edit-direccion" placeholder="Dirección" />
   <input type="text" id="edit-telefono" placeholder="Teléfono" required />
-  <input type="text" id="edit-documento" placeholder="Documento" required />
+  <select id="edit-tipo-documento" required>
+    <option value="">Selecciona tipo de documento</option>
+    <option value="CC">Cédula de Ciudadanía</option>
+    <option value="CE">Cédula de Extranjería</option>
+    <option value="TI">Tarjeta de Identidad</option>
+    <option value="PAS">Pasaporte</option>
+  </select>
   <input type="number" id="edit-id_categoria" placeholder="ID Categoría" />
   <input type="number" id="edit-id_servicio" placeholder="ID Servicio" />
   <button type="submit">Guardar Cambios</button>

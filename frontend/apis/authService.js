@@ -22,6 +22,12 @@ export async function Login(email, contraseña) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, contraseña })
     });
-    if (!res.ok) throw new Error("No se pudo hacer el login");
-    return res.json();
+
+    const data = await res.json();
+
+    if (!res.ok) {
+        throw new Error(data.message || "Error al iniciar sesión");
+    }
+
+    return data;
 }

@@ -74,6 +74,7 @@ router.get('/tipoPQRS', obtenerTiposPQRS);
 router.post('/tipoPQRS', crearTipoPQRS);
 //
 
+
 // tipoPago
 router.get('/tipo-pago', obtenerTiposPago);
 //
@@ -81,5 +82,6 @@ router.get('/tipo-pago', obtenerTiposPago);
 // factura
 router.get('/factura/cita/:id', obtenerFacturaPorCita);
 //
+
 
 export default router;

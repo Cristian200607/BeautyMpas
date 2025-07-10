@@ -1,5 +1,5 @@
 import { getCategoria } from '../../apis/apisCategoria.js';
-import { getServiciosByIdProfesional, postServicioProfesional} from '../../apis/apisServicio.js';
+import { getServiciosByIdProfesional, postServicioProfesional, actualizarServicio, eliminarServicio} from '../../apis/apisServicio.js';
 
 const selectCategorias = document.getElementById('select-categorias');
 const btnAgregar = document.getElementById('btnAgregar');
@@ -97,23 +97,45 @@ function renderizarTabla() {
       <td><input type="text" value="${cat.tiempo}" data-index="${index}" class="input-tiempo"></td>
       <td>
         <button class="btnGuardar" data-index="${index}">Guardar</button>
-        <button class="btnEliminar" data-id="${cat.id}">Eliminar</button>
+        <button class="btnEliminar" data-index="${index}">Eliminar</button>
       </td>
     `;
     tabla.appendChild(fila);
   });
 
   document.querySelectorAll('.btnEliminar').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const id = e.target.getAttribute('data-id');
-      categoriasSeleccionadas = categoriasSeleccionadas.filter(cat => cat.id != id);
-      renderizarTabla();
+    btn.addEventListener('click', async (e) => {
+      const index = e.target.getAttribute('data-index');
+
+      const cat = categoriasSeleccionadas[index];
+      if (!cat) return;
+
+      const confirmar = confirm(`¿Seguro que deseas eliminar el servicio "${cat.servicio}"?`);
+      if (!confirmar) return;
+
+      // Si el servicio ya está en la base de datos
+      if (cat.id_servicio) {
+        try {
+          await eliminarServicio(cat.id_servicio);
+          alert("Servicio eliminado del servidor.");
+        } catch (err) {
+          console.error("Error al eliminar servicio:", err);
+          alert("Error al eliminar servicio.");
+          return;
+        }
+      }
+
+      // Siempre eliminar del array local
+      categoriasSeleccionadas.splice(index, 1); // ← más seguro que filter en este caso
+      renderizarTabla(); // ← refresca la tabla
     });
   });
 
+
   document.querySelectorAll('.btnGuardar').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', async (e) => {
       const index = e.target.getAttribute('data-index');
+
       const nuevoServicio = document.querySelector(`.input-servicio[data-index="${index}"]`).value.trim();
       const nuevoPrecio = parseFloat(document.querySelector(`.input-precio[data-index="${index}"]`).value);
       const nuevaDescripcion = document.querySelector(`.input-descripcion[data-index="${index}"]`).value.trim();
@@ -124,14 +146,37 @@ function renderizarTabla() {
         return;
       }
 
-      categoriasSeleccionadas[index].servicio = nuevoServicio;
-      categoriasSeleccionadas[index].precio = nuevoPrecio;
-      categoriasSeleccionadas[index].descripcion = nuevaDescripcion;
-      categoriasSeleccionadas[index].tiempo = nuevoTiempo;
+      const cat = categoriasSeleccionadas[index];
 
-      alert("Cambios guardados en la tabla (sin actualizar aún en el servidor)");
+      // Actualizamos los datos localmente
+      cat.servicio = nuevoServicio;
+      cat.precio = nuevoPrecio;
+      cat.descripcion = nuevaDescripcion;
+      cat.tiempo = nuevoTiempo;
+
+      // Si ya existe en base de datos (tiene id_servicio), actualiza en el servidor
+      if (cat.id_servicio) {
+        try {
+          await actualizarServicio(cat.id_servicio, {
+            id_profesional: idProfesional,
+            id_categoria: cat.id,
+            servicio: cat.servicio,
+            precio: cat.precio,
+            descripcion_servicio: cat.descripcion,
+            tiempo_servicio: cat.tiempo
+          });
+
+          alert("Servicio actualizado correctamente en el servidor.");
+        } catch (err) {
+          console.error("Error al actualizar servicio:", err);
+          alert("Error al actualizar servicio.");
+        }
+      } else {
+        alert("Cambios guardados localmente (servicio nuevo aún no registrado).");
+      }
     });
   });
+
 }
 
 btnFinalizar.addEventListener('click', async () => {

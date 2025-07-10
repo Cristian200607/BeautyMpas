@@ -25,9 +25,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
     agendarBtn.addEventListener('click', () => {
+      const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+      if (!usuario) {
+        alert("⚠️ Debes iniciar sesión para agendar una cita.");
+        window.location.href = "/frontend/pages/login.html";
+        return;
+      }
+
       const id = profesional.id;
       window.location.href = `/frontend/pages/user/cuestionarioServicios.html?id=${id}`;
     });
+
+
   } catch (err) {
     console.error("[ERROR] No se pudo cargar el profesional:", err);
   }

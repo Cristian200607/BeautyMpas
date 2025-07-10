@@ -21,8 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <td>${prof.email}</td>
         <td>${prof.direccion || 'Sin dirección'}</td>
         <td>${prof.telefono}</td>
-        <td>${prof.id_categoria || 'N/A'}</td>
-        <td>${prof.id_servicio || 'N/A'}</td>
+        <td>${prof.documento || 'N/A'}</td>
         <td>
           <button onclick="editarProfesional(${prof.id})">✏️ Editar</button>
           <button onclick="eliminarProfesional(${prof.id})">🗑️ Eliminar</button>
@@ -46,6 +45,7 @@ window.editarProfesional = async (id) => {
     const nuevoEmail = prompt('Editar email:', prof.email);
     const nuevaDireccion = prompt('Editar dirección:', prof.direccion);
     const nuevoTelefono = prompt('Editar teléfono:', prof.telefono);
+    const nuevoDocumento = prompt('Editar teléfono:', prof.documento);
 
     if (!nuevoNombre || !nuevoEmail) {
       alert('Nombre y Email son obligatorios');
@@ -56,7 +56,8 @@ window.editarProfesional = async (id) => {
       nombre: nuevoNombre,
       email: nuevoEmail,
       direccion: nuevaDireccion,
-      telefono: nuevoTelefono
+      telefono: nuevoTelefono,
+      documento: nuevoDocumento
     });
 
     alert('Profesional actualizado correctamente');
