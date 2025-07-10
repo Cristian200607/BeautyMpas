@@ -9,6 +9,8 @@
 </head>
 <body>
   <div id="header-container"></div>
+  <!-- Flechas de navegación -->
+    <div id="flechas-navegacion"></div>
   <div class="header">
     <h1>Depilación</h1>
     <p>Piel suave y libre de vello con nuestras técnicas profesionales.</p>
@@ -18,6 +20,18 @@
     <section class="descripcion">
       <h2>¿Qué ofrecemos?</h2>
       <p>Contamos con técnicas avanzadas de depilación con cera, hilo y depilación definitiva con láser. Brindamos un servicio seguro, higiénico y adaptado a cada tipo de piel.</p>
+    </section>
+
+    <section class="galeria">
+      <h2>Galería</h2>
+      <div class="imagenes">
+        <img src="/frontend/assets/imagenes/imagenes_servicios/depilacion1.jpg" alt="Depilación con cera"/>
+        <img src="/frontend/assets/imagenes/imagenes_servicios/depilacion2.jfif" alt="Depilación con hilo"/>
+        <img src="/frontend/assets/imagenes/imagenes_servicios/depilacion3.webp" alt="Depilación láser"/>
+      </div>
+      <div class="boton-siguiente">
+        <a href="/frontend/pages/login.html" class="btn">Agendar</a>
+      </div>
     </section>
 
     <section id="servicios-depilacion">
@@ -74,23 +88,13 @@
         </ul>
       </article>
     </section>
-
-    <section class="galeria">
-      <h2>Galería</h2>
-      <div class="imagenes">
-        <img src="/frontend/assets/imagenes/imagenes_servicios/depilacion1.jpg" alt="Depilación con cera"/>
-        <img src="/frontend/assets/imagenes/imagenes_servicios/depilacion2.jfif" alt="Depilación con hilo"/>
-        <img src="/frontend/assets/imagenes/imagenes_servicios/depilacion3.webp" alt="Depilación láser"/>
-      </div>
-      <div class="boton-siguiente">
-        <a href="/frontend/catalogo_profesionales/catalogo_profesionales.html" class="btn">Agendar</a>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
     <p>&copy; 2025 Centro de Belleza. Todos los derechos reservados.</p>
   </footer>
+
+  <script src="/frontend/utils/header.js"></script>
+  <script src="/frontend/pages/servicios/flechasServicios.js"></script>
 </body>
-<script src="/frontend/utils/header.js"></script>
 </html>

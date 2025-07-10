@@ -9,6 +9,8 @@
 </head>
 <body>
   <div id="header-container"></div>
+  <!-- Flechas de navegación -->
+  <div id="flechas-navegacion"></div>
 
   <div class="header">
     <h1>Spa y Bienestar</h1>
@@ -20,7 +22,17 @@
       <h2>¿Qué ofrecemos?</h2>
       <p>Masajes relajantes, faciales, exfoliaciones y rituales de cuidado corporal. Un ambiente de paz y aromas terapéuticos te espera.</p>
     </section>
-
+    <section class="galeria">
+      <h2>Galería</h2>
+      <div class="imagenes">
+        <img src="/frontend/assets/imagenes/imagenes_servicios/masaje.jpg" alt="Spa y masajes"/>
+        <img src="/frontend/assets/imagenes/imagenes_servicios/spa3.jpg" alt="Bienestar"/>
+        <img src="/frontend/assets/imagenes/imagenes_servicios/spa2.webp" alt="Bienestar"/>
+      </div>
+      <div class="boton-siguiente">
+        <a href="/frontend/pages/login.html" class="btn">Agendar</a>
+      </div>
+     </section>
     <section id="servicios-spa">
       <h2>Conoce nuestros servicios</h2>
 
@@ -64,17 +76,7 @@
       </article>
     </section>
 
-    <section class="galeria">
-      <h2>Galería</h2>
-      <div class="imagenes">
-        <img src="/frontend/assets/imagenes/imagenes_servicios/" alt="Spa y masajes"/>
-        <img src="/frontend/servicios/imagenes_servicios/masaje.jpg" alt="Bienestar"/>
-        <img src="/frontend/servicios/imagenes_servicios/spamyp.jfif" alt="Bienestar"/>
-      </div>
-      <div class="boton-siguiente">
-        <a href="/catalogo_profesionales/catalogo_profesionales.html" class="btn">Siguiente</a>
-      </div>
-    </section>
+  
   </main>
 
   <footer class="footer">
@@ -82,5 +84,6 @@
   </footer>
 
   <script src="/frontend/utils/header.js"></script>
+  <script src="/frontend/pages/servicios/flechasServicios.js"></script>
 </body>
 </html>

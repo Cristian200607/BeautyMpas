@@ -9,20 +9,33 @@
 </head>
 <body class="barberia">
   <div id="header-container"></div>
-  
-  <div class="header">
+   <div id="flechas-navegacion"></div>
+  <div class="barberia-header">
     <h1>Barbería Profesional</h1>
     <p>Corte, estilo y cuidado personal para caballeros.</p>
   </div>
-
-  <main class="contenido">
-    <section class="descripcion">
+    </nav>
+   
+    <main class="contenido">
+    <section class="barberia-descripcion">
       <h2>¿Qué ofrecemos?</h2>
       <p>
         Nuestro servicio de barbería combina tradición y estilo moderno para ofrecerte una experiencia completa.
         Contamos con cortes de cabello personalizados, afeitado clásico con navaja, diseño y arreglo de barba, tratamientos capilares,
         tintura, masajes relajantes y productos especializados para el cuidado masculino.
       </p>
+    </section>
+
+    <section class="barberia-galeria">
+      <h2>Galería</h2>
+      <div class="barberia-imagenes">
+        <img src="/frontend/assets/imagenes/imagenes_servicios/barberia1.jpg" alt="Corte de cabello"/>
+        <img src="/frontend/assets/imagenes/imagenes_servicios/barberia2.jfif" alt="Afeitado profesional"/>
+        <img src="/frontend/assets/imagenes/imagenes_servicios/barberia3.jfif" alt="Interior de barbería"/>
+      </div>
+      <div class="boton-siguiente">
+        <a href="/frontend/pages/login.html" class="btn btn-barberia">Agendar</a>
+      </div>
     </section>
 
     <section id="servicios-barberia">
@@ -99,17 +112,6 @@
       </article>
     </section>
 
-    <section class="galeria">
-      <h2>Galería</h2>
-      <div class="imagenes">
-        <img src="/frontend/assets/imagenes/imagenes_servicios/barberia1.jpg" alt="Corte de cabello"/>
-        <img src="/frontend/assets/imagenes/imagenes_servicios/barberia2.jfif" alt="Afeitado profesional"/>
-        <img src="/frontend/assets/imagenes/imagenes_servicios/barberia3.jfif" alt="Interior de barbería"/>
-      </div>
-      <div class="boton-siguiente">
-        <a href="/frontend/catalogo_profesionales/catalogo_profesionales.html" class="btn">Agendar</a>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
@@ -117,5 +119,6 @@
   </footer>
 
   <script src="/frontend/utils/header.js"></script>
+  <script src="/frontend/pages/servicios/flechasServicios.js"></script>
 </body>
 </html>

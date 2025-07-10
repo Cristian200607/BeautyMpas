@@ -127,15 +127,15 @@ body {
   
 button {
     font-family:'Times New Roman', Times, serif;
-    background-color: #f992c5;;
-    color: white;               /* Texto blanco para mejor contraste */
-    border: none;               /* Sin borde */
-    padding: 10px 20px;         /* Espaciado interno */
-    border-radius: 20px;         /* Bordes redondeados */
-    font-size: 25px;            /* Tamaño del texto */
-    cursor: pointer;            /* Cambia el cursor al pasar */
-    transition: all 0.3s ease;  /* Animación suave para cambios */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    background-color: #f992c5;
+    color: white;               
+    border: none;               
+    padding: 10px 20px;        
+    border-radius: 20px;      
+    font-size: 25px;            
+    cursor: pointer;          
+    transition: all 0.3s ease;  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   }
   
   button:hover {

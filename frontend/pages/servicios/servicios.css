@@ -456,7 +456,7 @@ body {
 }
 
 .btn {
-  background-color: #f48ca7;
+  background-color:#f992c5;
   color: white;
   text-decoration: none;
   padding: 14px 32px;
@@ -468,7 +468,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #f36a93;
+  background-color: #ff7ece;
   transform: scale(1.05);
 }
 
@@ -523,4 +523,351 @@ body {
   content: " ✨";
   color: #f28ab2;
   font-size: 1.2rem;
+}
+/* === BARBERÍA - ESTILOS ESPECÍFICOS === */
+body.barberia {
+  background-color: #f4f4f4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.barberia-header {
+  background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.barberia-header h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  color: #e0b95b;
+}
+
+.barberia-header p {
+  font-size: 1.2em;
+  color: #ccc;
+}
+
+/* Descripción */
+.barberia-descripcion {
+  background-color: #fff;
+  padding: 40px 25px;
+  text-align: justify;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.barberia-descripcion h2 {
+  color: #2c2c2c;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Galería */
+.barberia-galeria {
+  padding: 40px 20px;
+  background-color: #1f1f1f;
+  color: white;
+  text-align: center;
+}
+
+.barberia-galeria h2 {
+  color: #e0b95b;
+  margin-bottom: 30px;
+}
+
+.barberia-imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.barberia-imagenes img {
+  width: 280px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s;
+}
+
+.barberia-imagenes img:hover {
+  transform: scale(1.05);
+}
+
+/* Botón agendar */
+.boton-siguiente .btn-barberia {
+  margin-top: 30px;
+  padding: 12px 30px;
+  font-size: 18px;
+  background-color: #e0b95b;
+  border-radius: 10px;
+  color: #1f1f1f;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.boton-siguiente .btn-barberia:hover {
+  background-color: #d1a748;
+  transform: scale(1.05);
+}
+
+/* Servicios destacados */
+#servicios-barberia {
+  background-color: #ffffff;
+  padding: 60px 20px;
+  color: #2c2c2c;
+}
+
+#servicios-barberia h2 {
+  text-align: center;
+  color: #1e1e1e;
+  margin-bottom: 40px;
+}
+
+#servicios-barberia article {
+  background-color: #f7f7f7;
+  border-left: 5px solid #e0b95b;
+  margin: 20px auto;
+  padding: 25px;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+#servicios-barberia h3 {
+  color: #2e2e2e;
+  margin-bottom: 10px;
+}
+
+#servicios-barberia ul {
+  margin-top: 5px;
+  padding-left: 20px;
+}
+
+#servicios-barberia li {
+  margin-bottom: 5px;
+}
+
+/* Footer */
+.footer {
+  background-color: #1e1e1e;
+  color: #ccc;
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+  border-top: 2px solid #e0b95b;
+}
+.nav-servicios {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto 0;
+  max-width: 1000px;
+  padding: 0 20px;
+}
+
+.nav-flecha {
+  font-size: 1.1rem;
+  color: #d94c7a;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.nav-flecha:hover {
+  transform: scale(1.05);
+  color: #f48ca7;
+}
+.navegacion-servicios {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem 2rem;
+  background-color: #ffe8f1;
+  border-bottom: 2px solid #f28ab2;
+  font-weight: bold;
+}
+
+.navegacion-servicios a {
+  text-decoration: none;
+  color: #d94c7a;
+  transition: color 0.3s ease;
+}
+
+.navegacion-servicios a:hover {
+  color: #a83861;
+  }
+  
+  body.barberia .navegacion-servicios {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem 2rem;
+  background-color: #2c2c2c;
+  border-bottom: 2px solid #e0b95b;
+  font-weight: bold;
+}
+
+body.barberia .navegacion-servicios a {
+  text-decoration: none;
+  color: #e0b95b;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+body.barberia .navegacion-servicios a:hover {
+  color: #f5d77e;
+  transform: scale(1.05);
+}
+/* ===== MEDIA QUERIES: RESPONSIVE DESIGN ===== */
+
+/* Para pantallas menores a 1024px (tablets y medianas) */
+@media (max-width: 1024px) {
+  .contenido, .barberia-descripcion, #servicios-barberia article, .faq details {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .servicios-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    padding: 1.5rem;
+  }
+
+  .imagenes img {
+    height: 200px;
+  }
+
+  .barberia-imagenes img {
+    width: 90%;
+    height: 180px;
+  }
+}
+
+/* Para pantallas menores a 768px (celulares) */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 36px;
+  }
+
+  .header p {
+    font-size: 18px;
+  }
+
+  .contenido h2,
+  .productos-uso h2,
+  .testimonios h2 {
+    font-size: 24px;
+  }
+
+  .servicio h2 {
+    font-size: 1.1rem;
+  }
+
+  .tags {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-servicios,
+  .navegacion-servicios {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .navegacion-servicios a {
+    font-size: 1rem;
+  }
+
+  .barberia-header h1 {
+    font-size: 2rem;
+  }
+
+  .barberia-header p {
+    font-size: 1rem;
+  }
+
+  .boton-siguiente .btn,
+  .btn-barberia {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .pro {
+    width: 90%;
+  }
+
+  .imagenes {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .barberia-imagenes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .barberia-imagenes img {
+    width: 100%;
+  }
+
+  .footer {
+    font-size: 13px;
+  }
+
+  #servicios-barberia article {
+    padding: 20px;
+  }
+
+  .barberia-descripcion {
+    padding: 20px;
+  }
+}
+
+/* Para pantallas muy pequeñas (menos de 480px) */
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .header p,
+  .barberia-header p {
+    font-size: 16px;
+  }
+
+  .btn,
+  .btn-barberia {
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+
+  .contenido article {
+    padding: 1rem;
+  }
+
+  .footer {
+    padding: 15px;
+  }
+
+  .proceso ol li {
+    padding-left: 1.5rem;
+  }
+
+  .proceso ol li::before {
+    font-size: 1rem;
+    top: 0.8rem;
+  }
+
+  .pro h3 {
+    font-size: 1rem;
+  }
+
+  .servicio img {
+    height: 160px;
+  }
 }
