@@ -1,50 +1,58 @@
-*{
-    margin: 0;
-    padding: 0;
-} 
-/*--------------------------------hasta aca va el head----------------------------------------  */ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #fcd1e4;
-    min-height: 100vh;
-  }
-  
-  .contenido-principal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 140px 20px;
-  }
-  
-  .contenedor-servicios {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1000px;
-    width: 100%;
-  }
-  
-  .tarjeta {
-    background-color: white;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    height: 160px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añadido para animación */
-  }
-  
-  .tarjeta:hover {
-    transform: scale(1.05); /* Agrandar la tarjeta al pasar el cursor */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Aumentar la sombra */
-  }
-  
-  .tarjeta p {
-    font-weight: 700;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 18px;
-    color: #333;
-  }
-  
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fcd1e4;
+  min-height: 100vh;
+}
+
+.contenido-principal {
+  display: flex;
+  justify-content: center;
+  padding: 140px 20px 60px;
+}
+
+.contenedor-servicios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.tarjeta {
+  background: linear-gradient(135deg, #e9acc4, #ecafc9);
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;  /* ✅ Esto quita el subrayado */
+  color: #5b2a3c;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+
+.tarjeta:hover {
+  transform: scale(1.06);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.tarjeta p {
+  font-size: 26px;
+  font-weight: 700;
+  text-decoration: none; /* Asegura que tampoco lo tenga el <p> */
+  z-index: 2;
+}
+
+
+
+

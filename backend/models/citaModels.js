@@ -45,3 +45,13 @@ export async function actualizarEstadoCita(id_cita, nuevoEstado) {
     [nuevoEstado, id_cita]
   );
 }
+
+export const getCorreoDatosCita = async (id_cita) => {
+  const [rows] = await pool.query(`
+    SELECT c.fecha_cita AS fecha, c.hora_cita AS hora, u.email, u.nombre 
+    FROM cita c 
+    JOIN usuarios u ON c.id_cliente = u.id 
+    WHERE c.id = ?`, [id_cita]);
+
+  return rows[0];
+};

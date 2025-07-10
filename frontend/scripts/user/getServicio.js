@@ -11,11 +11,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       categorias.forEach(cat => {
         const tarjeta = document.createElement('a');
-        //tarjeta.href = `Info_servicios/${cat.categoria.toLowerCase()}.html`; // opcional
+        tarjeta.classList.add('tarjeta');
         tarjeta.href = `/frontend/pages/user/catalogoProfesionales.html?id=${cat.id}`;
-        tarjeta.innerHTML = `<div class="tarjeta"><p>${cat.categoria}</p></div>`;
+        tarjeta.textContent = cat.categoria; // Solo texto, sin innerHTML
         contenedor.appendChild(tarjeta);
       });
+
     }
     catch(error) {
       console.error("Hubo un problema con la solicitud Fetch:", error);
