@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Seleccionar Categorías</title>
   <link rel="stylesheet" href="/frontend/assets/styles/cssProfesional/selectCategoria.css">
+  <link rel="stylesheet" href="/frontend/utils/header.css" />
 </head>
 <body>
+  <div id="header-container"></div>
   <div class="container">
+    
     <h1 class="titulo">Por favor seleccione las categorías que sabe</h1>
 
     <div class="formulario">
@@ -19,8 +22,10 @@
       <input type="number" id="precioServicio" placeholder="Precio del servicio ($)">
       <input type="text" id="descripcionServicio" placeholder="Descripción del servicio">
       <input type="text" id="tiempoServicio" placeholder="Tiempo del servicio (ej: 45min)">
-      
-      <button id="btnAgregar" class="btn-agregar">Agregar</button>
+
+      <div class="btn-agregar-container">
+        <button id="btnAgregar" class="btn-agregar">Agregar</button>
+      </div>
     </div>
 
     <table id="tablaCategorias">
@@ -38,10 +43,12 @@
       <tbody></tbody>
     </table>
 
-    <button class="btn-finalizar" id="btnFinalizar">Finalizar</button>
+    <div class="btn-finalizar-container">
+      <button class="btn-finalizar" id="btnFinalizar">Finalizar</button>
+    </div>
   </div>
 
   <script type="module" src="/frontend/scripts/profesional/crudCategorias.js"></script>
+  <script src="/frontend/utils/header.js"></script>
 </body>
 </html>
-

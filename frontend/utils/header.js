@@ -4,31 +4,35 @@ function loadHeader() {
     .then(data => {
       document.getElementById('header-container').innerHTML = data;
 
-      // Esperar un momento para que el DOM se actualice
       setTimeout(() => {
         const nav = document.querySelector("#nav");
         const abrir = document.querySelector("#abrir");
         const cerrar = document.querySelector("#cerrar");
+        const userLinks = document.getElementById('user-links');
+        const cerrarSesion = document.getElementById('cerrar-sesion');
 
-        if (abrir && cerrar) {
+        // Mostrar y ocultar el menú
+        if (abrir && cerrar && nav) {
           abrir.addEventListener("click", () => {
             nav.classList.add("visible");
+            abrir.style.display = "none";
           });
-
 
           cerrar.addEventListener("click", () => {
             nav.classList.remove("visible");
+            abrir.style.display = "inline-block";
           });
         }
 
-        const usuarios = JSON.parse(localStorage.getItem('usuario'));
-        const userLinks = document.getElementById('user-links');
+        // Mostrar datos del usuario
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
 
-        if (usuarios && userLinks) {
-          userLinks.innerHTML = `
-            <span>Hola, ${usuarios.nombre}</span>
-            <a href="#">Contacto</a>
-            <a href="/frontend/soporte/soporte.html">Soporte</a>
+        if (usuario && userLinks) {
+          userLinks.innerHTML = `Hola, ${usuario.nombre}`;
+        }
+
+        if (usuario && cerrarSesion) {
+          cerrarSesion.innerHTML = `
             <a href="#" id="logout-link">Cerrar sesión</a>
           `;
 
@@ -41,31 +45,7 @@ function loadHeader() {
             });
           }
         }
-      }, 0); // <= Esto asegura que el DOM ya tenga el HTML insertado
-
-      cerrar.addEventListener("click", () => {
-        nav.classList.remove("visible");
-      });
-
-      const usuarios = JSON.parse(localStorage.getItem('usuario')); // 👈 nombre correcto
-      const userLinks = document.getElementById('user-links');
-
-      if (usuarios) {
-        userLinks.innerHTML = `
-          <span>Hola, ${usuarios.nombre}</span>
-          <a href="#">Contacto</a>
-          <a href="#">Soporte</a>
-          <a href="#" id="logout-link">Cerrar sesión</a>
-        `;
-
-        document.getElementById('logout-link').addEventListener('click', (e) => {
-          e.preventDefault(); 
-          localStorage.removeItem('usuario'); 
-          window.location.href = "/frontend/pages/login.html";
-        });
-
-      }
-
+      }, 0);
     });
 }
 

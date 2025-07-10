@@ -1,91 +1,132 @@
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ESTILO GENERAL */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fce4ec;
-  margin: 0;
-  padding: 40px;
-  color: #333;
+  background-color: #fbe7f2;
 }
 
+/* CONTENEDOR PRINCIPAL */
 .container {
-  max-width: 1000px;
-  margin: auto;
-  background: white;
-  padding: 40px;
+  max-width: 1127px;
+  margin: 70px auto 0 auto;
+  background: #fff;
+  padding: 40px 30px;
   border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* TÍTULO */
 .titulo {
   text-align: center;
   color: #c2185b;
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
+/* FORMULARIO */
 .formulario {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
   margin-bottom: 35px;
+  align-items: end;
 }
 
 select,
 input[type="text"],
 input[type="number"] {
-  padding: 12px 15px;
+  padding: 12px 14px;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 15px;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: 0.2s ease-in-out;
 }
 
 select:focus,
 input:focus {
   border-color: #c2185b;
-  box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.15);
+  box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.1);
   outline: none;
 }
 
-.btn-agregar,
-.btn-finalizar {
+/* CONTENEDOR BOTÓN AGREGAR */
+.btn-agregar-container {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+
+.btn-agregar {
+  width: 200px;
   padding: 14px;
   background-color: #c2185b;
   color: white;
   border: none;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.btn-agregar:hover,
+.btn-agregar:hover {
+  background-color: #ad1457;
+}
+
+/* BOTÓN FINALIZAR */
+.btn-finalizar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-finalizar {
+  width: 250px;
+  padding: 14px;
+  background-color: #c2185b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 .btn-finalizar:hover {
   background-color: #ad1457;
 }
 
+/* TABLA */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-  border-radius: 10px;
+  margin-top: 25px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
 thead {
   background-color: #f8bbd0;
-  position: sticky;
-  top: 0;
-  z-index: 1;
+  color: #333;
+  font-weight: bold;
 }
 
 th, td {
-  padding: 14px;
+  padding: 12px 10px;
   text-align: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 tbody tr:hover {
@@ -95,13 +136,14 @@ tbody tr:hover {
 
 table input[type="text"],
 table input[type="number"] {
-  width: 90%;
+  width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
 }
 
+/* BOTONES DE ACCIÓN EN TABLA */
 .btnGuardar,
 .btnEliminar {
   padding: 8px 14px;
@@ -110,13 +152,15 @@ table input[type="number"] {
   font-weight: bold;
   cursor: pointer;
   font-size: 14px;
+  transition: background-color 0.2s ease;
+  margin-top: 6px;     /* 👈 Espacio vertical entre botones */
+  margin-bottom: 6px;  /* 👈 Puedes agregar esto si hay otros debajo */
 }
 
 .btnGuardar {
   background-color: #4caf50;
   color: white;
   margin-right: 5px;
-  transition: background-color 0.2s ease;
 }
 
 .btnGuardar:hover {
@@ -126,9 +170,37 @@ table input[type="number"] {
 .btnEliminar {
   background-color: #e91e63;
   color: white;
-  transition: background-color 0.2s ease;
 }
 
 .btnEliminar:hover {
   background-color: #d81b60;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .formulario {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-agregar,
+  .btn-finalizar {
+    grid-column: span 1;
+    width: 100%;
+  }
+
+  table input {
+    font-size: 13px;
+  }
+
+  th, td {
+    font-size: 14px;
+  }
+
+  .btn-agregar-container {
+    justify-content: center;
+  }
+
+  .btn-finalizar-container {
+    justify-content: center;
+  }
 }

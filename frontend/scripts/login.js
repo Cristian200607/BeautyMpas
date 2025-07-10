@@ -36,7 +36,6 @@ document.getElementById('FormLogin').addEventListener('submit', async (e) => {
         }
         
     } catch (error) {
-        console.error('Error al iniciar sesión:', error);
-        alert('Hubo un error al intentar iniciar sesión. Verifica tu conexión o intenta más tarde.');
+        alert(error.message);
     }
 });
