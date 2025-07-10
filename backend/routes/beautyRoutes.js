@@ -8,6 +8,7 @@ import { getImagenesByProfesional, subirImagenPortafolio, deleteImagen, subirIma
 import { obtenerPQRS, obtenerPQRSporId, crearPQRS, actualizarEstadoPQRS, eliminarPQRSporId, obtenerTiposPQRS, crearTipoPQRS } from '../controllers/pqrsController.js'; 
 import { obtenerTiposPago } from '../controllers/tipoPagoController.js';
 import { obtenerFacturaPorCita } from '../controllers/facturaController.js';
+import { enviarCorreoController } from '../controllers/emailContollers.js';
 const router = express.Router();
 
 //auth
@@ -83,5 +84,7 @@ router.get('/tipo-pago', obtenerTiposPago);
 router.get('/factura/cita/:id', obtenerFacturaPorCita);
 //
 
+
+router.post('/enviar-correo', enviarCorreoController);
 
 export default router;

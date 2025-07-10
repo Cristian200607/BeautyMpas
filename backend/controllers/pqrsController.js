@@ -7,6 +7,7 @@ import {
   getTiposPQRS,
   createTipoPQRS
 } from '../models/pqrsModel.js';
+import { enviarCorreo } from '../utils/mailer.js';
 
 export const obtenerPQRS = async (req, res) => {
   try {
@@ -35,6 +36,25 @@ export const obtenerPQRSporId = async (req, res) => {
 export const crearPQRS = async (req, res) => {
   try {
     const nuevaPQRS = await createPQRS(req.body);
+
+    // Enviar correo al administrador (correo fijo del .env)
+    const adminEmail = process.env.EMAIL_RECEIVER;
+    const { nombre_usuario, correo_usuario, descripcion } = req.body;
+
+    const asunto = 'Nueva solicitud PQRS recibida';
+    const mensaje = `
+      Nueva PQRS enviada:
+
+      👤 Nombre: ${nombre_usuario}
+      📧 Correo: ${correo_usuario}
+      📝 Descripción: ${descripcion}
+    `;
+
+    await enviarCorreo(adminEmail, asunto, mensaje);
+    const mensajeUsuario = `Hola ${nombre_usuario}, hemos recibido tu solicitud y la estaremos revisando. Gracias por escribirnos.`;
+    await enviarCorreo(correo_usuario, 'Confirmación de solicitud PQRS', mensajeUsuario);
+    
+
     res.status(201).json({ pqrs: nuevaPQRS });
   } catch (err) {
     console.error('Error al crear PQRS:', err);

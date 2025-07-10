@@ -1,9 +1,11 @@
 import cors from 'cors';
 import express from 'express';
 import path from 'path';
+import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import beautyRoutes from './routes/beautyRoutes.js';
 
+dotenv.config(); // 👈 MUY IMPORTANTE
 const app = express();
 app.use(cors());
 app.use(express.json());
