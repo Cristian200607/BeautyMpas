@@ -30,19 +30,18 @@ function formatoCOP(numero) {
 }
 
 function crearSeccionesAgrupadas(servicios) {
-    const categoriasMap = {
-        7: "Barbería",
-        8: "Pestañas",
-        9: "Maquillaje",
-        10: "Uñas",
-        11: "Spa",
-        12: "Cejas",
-        13: "Otro"
-    };
+  const categoriasMap = {
+    7: "Barbería",
+    8: "Pestañas",
+    9: "Maquillaje",
+    10: "Uñas",
+    11: "Spa",
+    12: "Cejas",
+    13: "Otro"
+  };
 
   const serviciosPorCategoria = {};
 
-  // Agrupar servicios por categoría
   servicios.forEach(servicio => {
     const categoriaId = servicio.id_categoria;
     if (!serviciosPorCategoria[categoriaId]) {
@@ -51,18 +50,15 @@ function crearSeccionesAgrupadas(servicios) {
     serviciosPorCategoria[categoriaId].push(servicio);
   });
 
-  // Insertar secciones
   Object.entries(serviciosPorCategoria).forEach(([idCategoria, servicios]) => {
     const section = document.createElement('section');
     section.classList.add('servicios');
 
-    // Botón desplegable
     const toggleBtn = document.createElement('button');
     toggleBtn.textContent = `🔽 ${categoriasMap[idCategoria]?.toUpperCase() || "CATEGORÍA"}`;
     toggleBtn.classList.add('categoria-toggle');
     section.appendChild(toggleBtn);
 
-    // Contenedor de servicios (ocultable)
     const container = document.createElement('div');
     container.classList.add('servicios-container');
 
@@ -88,12 +84,10 @@ function crearSeccionesAgrupadas(servicios) {
 
     section.appendChild(container);
 
-    // Insertar antes del selector de fecha
     const fechaContenedor = document.querySelector('.fecha-container');
     contenedorPrincipal.insertBefore(section, fechaContenedor);
   });
 
-  // Evento desplegable
   document.querySelectorAll('.categoria-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
       const container = btn.nextElementSibling;
@@ -101,11 +95,10 @@ function crearSeccionesAgrupadas(servicios) {
     });
   });
 
-  // Evento para botones de reserva
   document.querySelectorAll('.reservar-btn').forEach(btn => {
     btn.addEventListener('click', reservarServicio);
   });
-};
+}
 
 // Variables globales para el contador
 let cantidad = 0;
@@ -115,14 +108,12 @@ const cantidadElem = document.getElementById('cantidad');
 const subtotalElem = document.getElementById('subtotal');
 const finalizarBtn = document.querySelector('.finalizar-btn');
 
-// Función para reservar servicios
 function reservarServicio(event) {
   const btn = event.target;
   const id = parseInt(btn.getAttribute('data-id'));
   const valor = parseInt(btn.getAttribute('data-precio'));
 
   if (btn.classList.contains('reservado')) {
-    // Deseleccionar
     btn.classList.remove('reservado');
     btn.textContent = "Reservar";
     btn.style.backgroundColor = "#f3c7cc";
@@ -133,7 +124,6 @@ function reservarServicio(event) {
     const index = serviciosSeleccionados.indexOf(id);
     if (index > -1) serviciosSeleccionados.splice(index, 1);
   } else {
-    // Seleccionar
     btn.classList.add('reservado');
     btn.textContent = "Reservado";
     btn.style.backgroundColor = "#ccc";
@@ -144,7 +134,6 @@ function reservarServicio(event) {
     serviciosSeleccionados.push(id);
   }
 
-  // Actualizar visualmente
   cantidadElem.textContent = cantidad === 0
     ? "No has seleccionado servicios"
     : `Has seleccionado ${cantidad} servicio${cantidad > 1 ? 's' : ''}`;
@@ -152,7 +141,6 @@ function reservarServicio(event) {
   subtotalElem.textContent = formatoCOP(subtotal);
   finalizarBtn.disabled = cantidad === 0;
 }
-
 
 // ✅ Enviar datos al hacer clic en "Realizar reserva"
 finalizarBtn.addEventListener('click', async () => {
@@ -181,9 +169,19 @@ finalizarBtn.addEventListener('click', async () => {
 
   try {
     const result = await postCita(reserva);
-    console.log('Cita creada:', result);
+    console.log("Respuesta de postCita:", result);
+
+    // Extraer el ID de cita de forma segura (sin cambiar backend)
+    const idCita = result?.citaId;
+
+    if (!idCita || typeof idCita !== 'number') {
+      throw new Error("No se pudo obtener el ID numérico de la cita.");
+    }
+
     alert("✅ Tu cita ha sido registrada exitosamente.");
+    window.location.href = `/frontend/pages/user/facturaByIdCita.html?id=${idCita}`;
   } catch (error) {
     console.error('Error al crear cita:', error.message);
-  };
+    alert(`❌ Error al crear la cita: ${error.message}`);
+  }
 });
