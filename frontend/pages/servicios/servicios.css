@@ -723,6 +723,58 @@ body.barberia .navegacion-servicios a:hover {
   color: #f5d77e;
   transform: scale(1.05);
 }
+.intro {
+  max-width: 4000px;
+  margin: 60px auto 40px;
+  padding: 40px 1px;
+  background: linear-gradient(145deg, #ffe0ec, #f9f0ff);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(242, 99, 165, 0.2);
+  animation: fadeInUp 1s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.intro h1 {
+  font-size: 2.8rem;
+  color: #c94090;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.intro p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #444;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Animación para entrada */
+@keyframes fadeInUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 600px) {
+  .intro {
+    padding: 25px 15px;
+  }
+
+  .intro h1 {
+    font-size: 2rem;
+  }
+
+  .intro p {
+    font-size: 1rem;
+  }
+}
+
 /* ===== MEDIA QUERIES: RESPONSIVE DESIGN ===== */
 
 /* Para pantallas menores a 1024px (tablets y medianas) */
