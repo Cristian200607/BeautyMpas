@@ -1,65 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Extensiones de Pestañas</title>
-  <link rel="stylesheet" href="/frontend/assets/styles/cssUser/cuestionarioServicios.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/frontend/assets/styles/cssUser/cuestionarioServicios.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="/frontend/utils/header.css" />
 </head>
 <body>
-  <header>
-    <button class="abrir-menu" id="abrir"><i class="bi bi-list"></i></button>
-    <nav class="nav" id="nav">
-      <button class="cerrar-menu" id="cerrar"><i class="bi bi-x"></i></button>
-      <ul class="nav-list">
-        <li><a href="/catalogo_profesionales/catalogo_profesionales.html">Profesionales</a></li>
-        <li><a href="#">Servicios</a></li>
-        <li><a href="#">Soporte</a></li>
-        <li><a href="#">Contacto</a></li>
-        <li><a href="#">Login</a></li>
-      </ul>
-    </nav>
-    <img src="../imagenes/logosinfondo.png" alt="" class="logo">
-    <div class="enlaces">
-      <a href="/index.html">Inicio</a>
-      <a href="#">Contacto</a>
-      <a href="#">Soporte</a>
-      <a href="#">Login</a>
+  <div id="header-container"></div>
+
+  <!-- Servicios dinámicos generados por JS se insertarán aquí -->
+  <!-- No necesitas agregar nada más aquí -->
+
+  <!-- Fecha, hora y resumen fijo abajo -->
+  <div class="barra-reserva">
+    <div class="fecha-hora">
+      <label for="fecha" class="fecha-label">Fecha:</label>
+      <input type="date" id="fecha" class="fecha-input" />
+
+      <label for="hora" class="fecha-label">Hora:</label>
+      <input type="time" id="hora" class="fecha-input" />
     </div>
-  </header>
 
-  <!-- Aquí el JS insertará secciones con servicios dinámicamente -->
-
-  <div class="fecha-container">
-    <label for="fecha" class="fecha-label">Selecciona una fecha:</label>
-    <input type="date" id="fecha" class="fecha-input">
-
-    <label for="hora" class="fecha-label">Selecciona una hora:</label>
-    <input type="time" id="hora" class="fecha-input">
-  </div>
-
-  <div class="barra-inferior">
-    <p><span id="cantidad">No has seleccionado servicios</span></p>
-    <div class="resumen">
+    <div class="info-reserva">
+      <p id="cantidad">No has seleccionado servicios</p>
       <p>Subtotal: <span id="subtotal">$0</span></p>
       <button class="finalizar-btn" disabled>Realizar reserva</button>
     </div>
   </div>
 
   <script type="module" src="/frontend/scripts/user/getServiciosOfProfesional.js"></script>
-  <script>
-    // Menú hamburguesa
-    const nav = document.querySelector("#nav");
-    const abrir = document.querySelector("#abrir");
-    const cerrar = document.querySelector("#cerrar");
-
-    abrir.addEventListener("click", () => {
-      nav.classList.add("visible");
-    });
-
-    cerrar.addEventListener("click", () => {
-      nav.classList.remove("visible");
-    });
-  </script>
+  <script type="module" src="/frontend/utils/header.js"></script>
 </body>
 </html>

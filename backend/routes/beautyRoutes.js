@@ -72,5 +72,4 @@ router.delete('/pqrs/:id', eliminarPQRSporId);
 router.get('/tipoPQRS', obtenerTiposPQRS);
 router.post('/tipoPQRS', crearTipoPQRS);
 //
-
 export default router;

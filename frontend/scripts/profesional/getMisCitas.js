@@ -11,10 +11,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   try {
     const citas = await getCitasByIdProfesional(id_profesional);
-    
 
     if (!citas || citas.length === 0) {
-      document.getElementById("lista-citas").innerHTML = "<p>No hay citas pendientes.</p>";
+      document.getElementById("lista-citas").innerHTML = "<tr><td colspan='7'>No hay citas pendientes.</td></tr>";
       return;
     }
 
@@ -24,33 +23,42 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
+function formatearFecha(fechaISO) {
+  const fecha = new Date(fechaISO);
+  const dia = String(fecha.getDate()).padStart(2, '0');
+  const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+  const anio = fecha.getFullYear();
+  return `${dia}/${mes}/${anio}`; // Cambia el formato si prefieres anio-mes-dia
+}
+
 function renderizarCitas(citas) {
-  const contenedor = document.getElementById("lista-citas");
-  contenedor.innerHTML = "";
+  const tbody = document.getElementById("lista-citas");
+  tbody.innerHTML = "";
 
   citas.forEach(cita => {
-    const div = document.createElement("div");
-    div.classList.add("citas");
+    const tr = document.createElement("tr");
 
-    div.innerHTML = `
-      <div>${cita.nombre_cliente}</div>
-      <div>${cita.email}</div>
-      <div>${cita.servicios || 'N/A'}</div>
-      <div>${cita.fecha_cita}</div>
-      <div>${cita.hora_cita}</div>
-      <div>${cita.precios}</div>
-      <div>${cita.direccion}</div>
-      <div>${cita.estado_cita}</div>
-      <div class="buttons">
-        <button class="accept" data-id="${cita.id_cita}">Aceptar</button>
-        <button class="decline" data-id="${cita.id_cita}">Cancelar</button>
-      </div>
+    tr.innerHTML = `
+      <td>${cita.nombre_cliente}</td>
+      <td>${cita.email}</td>
+      <td>${cita.servicios || 'N/A'}</td>
+      <td>${formatearFecha(cita.fecha_cita)}</td>
+      <td>${cita.hora_cita}</td>
+      <td>${cita.direccion}</td>
+      <td>${cita.estado_cita}</td> <!-- NUEVO -->
+      <td>
+        <div class="botones">
+          <button class="accept" data-id="${cita.id_cita}"><i class="bi bi-check-circle"></i></button>
+          <button class="decline" data-id="${cita.id_cita}"><i class="bi bi-x-circle"></i></button>
+        </div>
+      </td>
     `;
 
-    contenedor.appendChild(div);
+    tbody.appendChild(tr);
   });
 
-  // Eventos para aceptar/rechazar
+  // Eventos de los botones
+  
   document.querySelectorAll('.accept').forEach(btn => {
     btn.addEventListener('click', async () => {
       const idCita = btn.getAttribute('data-id');
@@ -73,8 +81,8 @@ function renderizarCitas(citas) {
         alert('Cita cancelada');
         location.reload();
       } catch (error) {
-        console.error("Error al rechazar cita:", error.message);
-        alert("Error al rechazar cita");
+        console.error("Error al cancelar cita:", error.message);
+        alert("Error al cancelar cita");
       }
     });
   });
