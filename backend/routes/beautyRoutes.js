@@ -6,7 +6,8 @@ import{ getAllClientes, getClientePorId, getClientePorEmail, updateClientePorId,
 import { crearCita, obtenerCitasPorProfesional, actualizarCitaEstado } from '../controllers/citaControllers.js';
 import { getImagenesByProfesional, subirImagenPortafolio, deleteImagen, subirImagenPerfil, getImagenPerfil} from '../controllers/imagenController.js';
 import { obtenerPQRS, obtenerPQRSporId, crearPQRS, actualizarEstadoPQRS, eliminarPQRSporId, obtenerTiposPQRS, crearTipoPQRS } from '../controllers/pqrsController.js'; 
-
+import { obtenerTiposPago } from '../controllers/tipoPagoController.js';
+import { obtenerFacturaPorCita } from '../controllers/facturaController.js';
 const router = express.Router();
 
 //auth
@@ -72,4 +73,15 @@ router.delete('/pqrs/:id', eliminarPQRSporId);
 router.get('/tipoPQRS', obtenerTiposPQRS);
 router.post('/tipoPQRS', crearTipoPQRS);
 //
+
+
+// tipoPago
+router.get('/tipo-pago', obtenerTiposPago);
+//
+
+// factura
+router.get('/factura/cita/:id', obtenerFacturaPorCita);
+//
+
+
 export default router;
